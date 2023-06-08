@@ -1,13 +1,13 @@
 /********************************************************************************\
-×÷ÕßĞÅÏ¢£º
-	ĞÕÃû£ºÁº×Ó²ı   Ñ§ºÅ£º21251106224  °à¼¶£º21¼ÆÊµ2°à  Ñ§Ôº£ºĞÅÏ¢Ñ§Ôº
+ä½œè€…ä¿¡æ¯ï¼š
+	å§“åï¼šæ¢å­æ˜Œ   å­¦å·ï¼š21251106224  ç­çº§ï¼š21è®¡å®2ç­  å­¦é™¢ï¼šä¿¡æ¯å­¦é™¢
 	Email:2010435481@qq.com    Tel:13071656746
-°æÈ¨ÉùÃ÷£º
-	°æÈ¨¹éÁº×Ó²ıËùÓĞ£¬³ıÀÏÊ¦Íâ£¬Î´¾­ÔÊĞí²»µÃ¿½±´±¾ÈË×÷Òµ
-ÕªÒª£º
-ÆäËûËµÃ÷£º
-	ÎŞ
-Ä£¿é£º
+ç‰ˆæƒå£°æ˜ï¼š
+	ç‰ˆæƒå½’æ¢å­æ˜Œæ‰€æœ‰ï¼Œé™¤è€å¸ˆå¤–ï¼Œæœªç»å…è®¸ä¸å¾—æ‹·è´æœ¬äººä½œä¸š
+æ‘˜è¦ï¼š
+å…¶ä»–è¯´æ˜ï¼š
+	æ— 
+æ¨¡å—ï¼š
 	Created  on          2023/3/10 by author
 	The latest update on 2023/4/28 by author
 \********************************************************************************/
@@ -27,116 +27,116 @@
 
 using namespace std;
 typedef struct college
-{//Ñ§Ôº½Úµã
-	int  collegeID;        //Ñ§Ôº±àºÅ
-	char collegeName[100]; //Ñ§ÔºÃû³Æ
-	int  collegeGrade;     //Ñ§Ôº×Ü·Ö
-	int  manGrade;         //ÄĞÍÅÌå×Ü·Ö
-	int  womGrade;         //Å®ÍÅÌå×Ü·Ö
-	struct college* next;  //Ö¸Õë
+{//å­¦é™¢èŠ‚ç‚¹
+	int  collegeID;        //å­¦é™¢ç¼–å·
+	char collegeName[100]; //å­¦é™¢åç§°
+	int  collegeGrade;     //å­¦é™¢æ€»åˆ†
+	int  manGrade;         //ç”·å›¢ä½“æ€»åˆ†
+	int  womGrade;         //å¥³å›¢ä½“æ€»åˆ†
+	struct college* next;  //æŒ‡é’ˆ
 } collegeNode;
 typedef struct event
-{//ÏîÄ¿½Úµã
-	int    eventID;        //ÏîÄ¿±àºÅ
-	char    eventName[100];//ÏîÄ¿Ãû³Æ
-	int    sex;            //ĞÔ±ğ£¨1£¬ÄĞ/0.Å®£©
-	int    gradeWeight;    //Ñ¡ÔñÇ°ÎåÃû(5)»¹ÊÇÇ°ÈıÃû(3)
-	int    awardCollege[25];//»ñ½±µÄÑ§Ôº 
-	int    competeCollege;//²Î¼Ó¸ÃÏîÄ¿µÄÑ§ÔºÊı
-	struct event* next;    //Ö¸Õë
+{//é¡¹ç›®èŠ‚ç‚¹
+	int    eventID;        //é¡¹ç›®ç¼–å·
+	char    eventName[100];//é¡¹ç›®åç§°
+	int    sex;            //æ€§åˆ«ï¼ˆ1ï¼Œç”·/0.å¥³ï¼‰
+	int    gradeWeight;    //é€‰æ‹©å‰äº”å(5)è¿˜æ˜¯å‰ä¸‰å(3)
+	int    awardCollege[25];//è·å¥–çš„å­¦é™¢ 
+	int    competeCollege;//å‚åŠ è¯¥é¡¹ç›®çš„å­¦é™¢æ•°
+	struct event* next;    //æŒ‡é’ˆ
 } eventNode;
-//´òÓ¡²Ëµ¥
+//æ‰“å°èœå•
 void PrintMenu();
-//¼ì²éÃ¿Ò»´ÎÊäÈëµÄÊıÊÇ·ñ·ûºÏ·¶Î§  
+//æ£€æŸ¥æ¯ä¸€æ¬¡è¾“å…¥çš„æ•°æ˜¯å¦ç¬¦åˆèŒƒå›´  
 int  NumCheck(int* num, int max, int min);
 
-//³õÊ¼»¯ĞÅÏ¢
+//åˆå§‹åŒ–ä¿¡æ¯
 void InitImfomation(collegeNode** Chead, collegeNode** Cend, eventNode** Ehead, eventNode** Eend);
-//³õÊ¼»¯Ñ§ÔºĞÅÏ¢(Î²²å·¨½¨Á¢µ¥Á´±í)
+//åˆå§‹åŒ–å­¦é™¢ä¿¡æ¯(å°¾æ’æ³•å»ºç«‹å•é“¾è¡¨)
 void GetCollegeNode(collegeNode** Chead, collegeNode** Cend);
-//³õÊ¼»¯ÏîÄ¿ĞÅÏ¢
+//åˆå§‹åŒ–é¡¹ç›®ä¿¡æ¯
 void GetEventNode(eventNode** Ehead, eventNode** Eend);
-//³õÊ¼»¯ÏîÄ¿³É¼¨ĞÅÏ¢
+//åˆå§‹åŒ–é¡¹ç›®æˆç»©ä¿¡æ¯
 void InitGrade(eventNode* Ehead, collegeNode* Ehaed, int lacation);
-//Ìí¼Ó³É¼¨
+//æ·»åŠ æˆç»©
 void AddCollegeGrade(eventNode* ENode, collegeNode* Chead, int intID, int ranking);
 
-//¸ù¾İÑ¡Ôñ£¬µ÷ÓÃÏîÄ¿»òÕßÑ§ÔºÉ¾³ıº¯Êı
+//æ ¹æ®é€‰æ‹©ï¼Œè°ƒç”¨é¡¹ç›®æˆ–è€…å­¦é™¢åˆ é™¤å‡½æ•°
 void Delete(collegeNode** Chead, eventNode** Ehead);
-//É¾³ıÑ§Ôº½Úµã
+//åˆ é™¤å­¦é™¢èŠ‚ç‚¹
 void  DeleteCollege(collegeNode** Chead, eventNode** Ehead);
-//É¾³ıÏîÄ¿½Úµã
+//åˆ é™¤é¡¹ç›®èŠ‚ç‚¹
 void  DeleteEvent(collegeNode** Chead, eventNode** Ehead);
-//ĞŞ¸Ä»ñ½±Ãû´Î¼ÇÂ¼
+//ä¿®æ”¹è·å¥–åæ¬¡è®°å½•
 void ModifyGrade(eventNode* Ehead, collegeNode* Chead);
 
-//°´ ±àºÅ »òÕß Ãû³Æ ²éÑ¯ Ñ§ÔºµÄÇé¿ö
+//æŒ‰ ç¼–å· æˆ–è€… åç§° æŸ¥è¯¢ å­¦é™¢çš„æƒ…å†µ
 void Search(collegeNode* Chead, eventNode* ENode);
-//ÏÔÊ¾±ÈÈüÏîÄ¿¸÷Ñ§ÔºÃû´ÎÇé¿ö
+//æ˜¾ç¤ºæ¯”èµ›é¡¹ç›®å„å­¦é™¢åæ¬¡æƒ…å†µ
 void PrintEvent(collegeNode* Chead, eventNode* Ehead);
-//°´ ±àºÅ »òÕß Ãû³Æ ²éÑ¯ ÏîÄ¿»ñ½±Çé¿ö 
+//æŒ‰ ç¼–å· æˆ–è€… åç§° æŸ¥è¯¢ é¡¹ç›®è·å¥–æƒ…å†µ 
 void FindTop(collegeNode* Chead, eventNode* Ehead);
 
 
-//ÅÅĞò£¬µ÷ÓÃÈı¸ö¿ìËÙÅÅĞòº¯Êı
+//æ’åºï¼Œè°ƒç”¨ä¸‰ä¸ªå¿«é€Ÿæ’åºå‡½æ•°
 void Sort(collegeNode** Chead);
-//¸ùÑ§ÔºIDÉıĞò¿ìËÙÅÅĞò
+//æ ¹å­¦é™¢IDå‡åºå¿«é€Ÿæ’åº
 void CollegeIDQuickSort(collegeNode** head, collegeNode** tail);
-//¸ù¾İÅ®ÍÅ×Ü·Ö½µĞò¿ìËÙÅÅĞò
+//æ ¹æ®å¥³å›¢æ€»åˆ†é™åºå¿«é€Ÿæ’åº
 void WomQuickSort(collegeNode** head, collegeNode** tail);
-//¸ù¾İÄĞÍÅ×Ü·Ö½µĞò¿ìËÙÅÅĞò
+//æ ¹æ®ç”·å›¢æ€»åˆ†é™åºå¿«é€Ÿæ’åº
 void ManQuickSort(collegeNode** head, collegeNode** tail);
-//¸ù¾İÑ§Ôº×Ü·Ö½µĞò¿ìËÙÅÅĞò
+//æ ¹æ®å­¦é™¢æ€»åˆ†é™åºå¿«é€Ÿæ’åº
 void CollegeGradeQuickSort(collegeNode** head, collegeNode** tail);
-//½»»»Á½¸ö½ÚµãµÄËùÓĞÖµ
+//äº¤æ¢ä¸¤ä¸ªèŠ‚ç‚¹çš„æ‰€æœ‰å€¼
 void SwapNodeValue(collegeNode** a, collegeNode** b);
-//´òÓ¡ÅÅĞòºóµÄ½á¹û
+//æ‰“å°æ’åºåçš„ç»“æœ
 void GradePrint(collegeNode* Chead);
 
-//µ÷ÓÃCFileRead¡¢EFileReadº¯Êı£¬¶ÁÈ¡ÒÑ´æÔÚµÄĞÅÏ¢
+//è°ƒç”¨CFileReadã€EFileReadå‡½æ•°ï¼Œè¯»å–å·²å­˜åœ¨çš„ä¿¡æ¯
 void Load(collegeNode** Chead, collegeNode** Cend, eventNode** Ehead, eventNode** Eend);
-//Í¨¹ıµ÷ÓÃCFileWrite¡¢EFileWriteº¯Êı£¬±£´æĞÅÏ¢²¢ÍË³ö
+//é€šè¿‡è°ƒç”¨CFileWriteã€EFileWriteå‡½æ•°ï¼Œä¿å­˜ä¿¡æ¯å¹¶é€€å‡º
 void Save(collegeNode* Chead, eventNode* Ehead);
-//¶ÁÈ¡ÎÄ¼şÖĞÑ§ÔºµÄĞÅÏ¢
+//è¯»å–æ–‡ä»¶ä¸­å­¦é™¢çš„ä¿¡æ¯
 void CFileRead(collegeNode** Chead, collegeNode** Cend);
-//¶ÁÈ¡ÎÄ¼şÖĞÏîÄ¿µÄĞÅÏ¢
+//è¯»å–æ–‡ä»¶ä¸­é¡¹ç›®çš„ä¿¡æ¯
 void EFileRead(eventNode** Ehead, eventNode** Eend);
-//¶ÁÈ¡ÎÄ¼şÖĞÑ§ÔºµÄĞÅÏ¢
+//è¯»å–æ–‡ä»¶ä¸­å­¦é™¢çš„ä¿¡æ¯
 void CFileWrite(collegeNode* Chead);
-//¶ÁÈ¡ÎÄ¼şÖĞÏîÄ¿µÄĞÅÏ¢
+//è¯»å–æ–‡ä»¶ä¸­é¡¹ç›®çš„ä¿¡æ¯
 void EFileWrite(eventNode* Chead);
 
 
 
-//todo**********************È«¾Ö±äÁ¿****************************/
-int id_event = 0;                //¸øÑ§Ôº±àºÅ¸³Öµ
-int id_college = 0;              //¸øÏîÄ¿±àºÅ¸³Öµ   
-int grade_3[100] = { 5,3,2 };    //¸øÈ¡Ç°ÈıÃû·ÖÊı¸³Öµ
-int grade_5[100] = { 7,5,3,2,1 };//¸øÈ¡Ç°ÎåÃû·ÖÊı¸³Öµ
-int location = 0;                //¶¨Î»µ½ĞèÒª³õÊ¼»¯µÄÏîÄ¿½Úµã
-int collegeCount=0;              //ÀÛ¼ÆÑ§ÔºÊıÁ¿ 
-int print_choose;                //Ñ¡Ôñ´òÓ¡ÄÄÒ»¸öÅÅĞòºóµÄ½á¹û
-bool fileFlag = true;            //ÊÇ·ñÒÑ¾­¶ÁÈ¡ÎÄ¼ş
+//todo**********************å…¨å±€å˜é‡****************************/
+int id_event = 0;                //ç»™å­¦é™¢ç¼–å·èµ‹å€¼
+int id_college = 0;              //ç»™é¡¹ç›®ç¼–å·èµ‹å€¼   
+int grade_3[100] = { 5,3,2 };    //ç»™å–å‰ä¸‰ååˆ†æ•°èµ‹å€¼
+int grade_5[100] = { 7,5,3,2,1 };//ç»™å–å‰äº”ååˆ†æ•°èµ‹å€¼
+int location = 0;                //å®šä½åˆ°éœ€è¦åˆå§‹åŒ–çš„é¡¹ç›®èŠ‚ç‚¹
+int collegeCount=0;              //ç´¯è®¡å­¦é™¢æ•°é‡ 
+int print_choose;                //é€‰æ‹©æ‰“å°å“ªä¸€ä¸ªæ’åºåçš„ç»“æœ
+bool fileFlag = true;            //æ˜¯å¦å·²ç»è¯»å–æ–‡ä»¶
 //todo*********************************************************/
 
 
-//*******************************************»ù±¾*******************************************************************/
+//*******************************************åŸºæœ¬*******************************************************************/
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	main
-¹¦ÄÜÃèÊö:
-	¶¨Òå½á¹¹ÌâÖ¸Õë£¬µ÷ÓÃ¸÷º¯Êı
-º¯Êı²ÎÊı:
-	ÎŞ
-·µ»ØÖµ:
-	ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê3ÔÂ10ÈÕ´´½¨±¾Ä£¿é£¬
+åŠŸèƒ½æè¿°:
+	å®šä¹‰ç»“æ„é¢˜æŒ‡é’ˆï¼Œè°ƒç”¨å„å‡½æ•°
+å‡½æ•°å‚æ•°:
+	æ— 
+è¿”å›å€¼:
+	æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´3æœˆ10æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void main() 
 {
 	collegeNode* Chead = NULL;
-	collegeNode* Cend = NULL; //½á¹¹ÌåÖ¸Õë,Í·Î²
+	collegeNode* Cend = NULL; //ç»“æ„ä½“æŒ‡é’ˆ,å¤´å°¾
 	eventNode* Ehead = NULL;
 	eventNode* Eend = NULL;
 	int MAX = 9;
@@ -148,32 +148,32 @@ void main()
 
 		switch (chooseNum)
 		{
-		case 1://Ìí¼ÓÑ§ÔºÏîÄ¿
+		case 1://æ·»åŠ å­¦é™¢é¡¹ç›®
 			InitImfomation(&Chead, &Cend, &Ehead, &Eend);
 			// CheckIFin(Chead, Ehead);
 			break;
-		case 2://ÅÅĞòÊä³ö		
+		case 2://æ’åºè¾“å‡º		
 			Sort(&Chead);
 			break;		
-		case 3://°´ ±àºÅ »òÕß Ãû³Æ ²éÑ¯ Ñ§ÔºµÄÇé¿ö
+		case 3://æŒ‰ ç¼–å· æˆ–è€… åç§° æŸ¥è¯¢ å­¦é™¢çš„æƒ…å†µ
 			Search(Chead,Ehead);
 			break;
 		case 4:
 			FindTop(Chead, Ehead);
 			break;
-		case 5://ÏÔÊ¾±ÈÈüÏîÄ¿¸÷Ñ§ÔºÃû´ÎÇé¿ö           
+		case 5://æ˜¾ç¤ºæ¯”èµ›é¡¹ç›®å„å­¦é™¢åæ¬¡æƒ…å†µ           
 			PrintEvent(Chead, Ehead);
 			break;
-		case 6://ĞŞ¸Ä»ñ½±Ãû´Î¼ÇÂ¼
+		case 6://ä¿®æ”¹è·å¥–åæ¬¡è®°å½•
 			ModifyGrade(Ehead, Chead);
 			break;
-		case 7://É¾³ıÄ³¸öÑ§Ôº»òÕßÏîÄ¿       
+		case 7://åˆ é™¤æŸä¸ªå­¦é™¢æˆ–è€…é¡¹ç›®       
 			Delete(&Chead, &Ehead);
 			break;
-		case 8://¶ÁÈ¡´æÔÚµÄÊı¾İ
+		case 8://è¯»å–å­˜åœ¨çš„æ•°æ®
 			Load(&Chead, &Cend, &Ehead, &Eend);
 			break;
-		case 9://±£´æ²¢ÍË³ö
+		case 9://ä¿å­˜å¹¶é€€å‡º
 			Save(Chead, Ehead);
 			break;
 
@@ -181,57 +181,57 @@ void main()
 	}//while
 }
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	PrintMenu
-¹¦ÄÜÃèÊö:
-   ´òÓ¡²Ëµ¥
-º¯Êı²ÎÊı:
-   ÎŞ
-·µ»ØÖµ:
-	 ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê3ÔÂ11ÈÕ´´½¨±¾Ä£¿é£¬
+åŠŸèƒ½æè¿°:
+   æ‰“å°èœå•
+å‡½æ•°å‚æ•°:
+   æ— 
+è¿”å›å€¼:
+	 æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´3æœˆ11æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void PrintMenu()
-{//´òÓ¡²Ëµ¥
-	SetConsoleTitle("ÔË¶¯»á·ÖÊıÍ³¼ÆÏµÍ³ @SKYCHANG");
-	system("mode con cols=150 lines=30");//¿ØÖÆÌ¨ ¿í¶È150 ¸ß¶È30
-	cout << "\t\t===============ÔË¶¯»á·ÖÊı¹ÜÀíÏµÍ³=============================" << endl;
-	cout << "\t\t |   1.Ìí¼ÓÑ§ÔººÍÏîÄ¿                           |   ÈıÃûÖÆ(1,2,3) " << endl;
-	cout << "\t\t |   2.°´ÄĞÍÅÌå/Å®ÍÅÌå/Ñ§Ôº×Ü·Ö/Ñ§ÔºIDÅÅĞòÊä³ö  |  ·ÖÊı--5,3,2" << endl;
-	cout << "\t\t |   3.°´ ±àºÅ »òÕß Ãû³Æ ²éÑ¯ Ñ§ÔºµÄÇé¿ö        |  " << endl;
-	cout << "\t\t |   4.°´ ±àºÅ »òÕß Ãû³Æ ²éÑ¯ ÏîÄ¿»ñ½±Çé¿ö      |  " << endl;
-	cout << "\t\t |   5.ÏÔÊ¾±ÈÈüÏîÄ¿¸÷Ñ§ÔºÃû´ÎÇé¿ö               |  ÎåÃûÖÆ(1,2,3,4,5)" << endl;
-	cout << "\t\t |   6.ĞŞ¸Ä»ñ½±Ãû´Î¼ÇÂ¼                         |  ·ÖÊı--7,5,3,2,1 " << endl;
-	cout << "\t\t |   7.É¾³ıÄ³Ñ§Ôº»òÕßÏîÄ¿                       |  " << endl;
-	cout << "\t\t |   8.¶ÁÈ¡ÒÑ´æÔÚµÄĞÅÏ¢                         |  " << endl;
-	cout << "\t\t |   9.±£´æĞÅÏ¢²¢ÍË³ö                           |  " << endl;
+{//æ‰“å°èœå•
+	SetConsoleTitle("è¿åŠ¨ä¼šåˆ†æ•°ç»Ÿè®¡ç³»ç»Ÿ @SKYCHANG");
+	system("mode con cols=150 lines=30");//æ§åˆ¶å° å®½åº¦150 é«˜åº¦30
+	cout << "\t\t===============è¿åŠ¨ä¼šåˆ†æ•°ç®¡ç†ç³»ç»Ÿ=============================" << endl;
+	cout << "\t\t |   1.æ·»åŠ å­¦é™¢å’Œé¡¹ç›®                           |   ä¸‰ååˆ¶(1,2,3) " << endl;
+	cout << "\t\t |   2.æŒ‰ç”·å›¢ä½“/å¥³å›¢ä½“/å­¦é™¢æ€»åˆ†/å­¦é™¢IDæ’åºè¾“å‡º  |  åˆ†æ•°--5,3,2" << endl;
+	cout << "\t\t |   3.æŒ‰ ç¼–å· æˆ–è€… åç§° æŸ¥è¯¢ å­¦é™¢çš„æƒ…å†µ        |  " << endl;
+	cout << "\t\t |   4.æŒ‰ ç¼–å· æˆ–è€… åç§° æŸ¥è¯¢ é¡¹ç›®è·å¥–æƒ…å†µ      |  " << endl;
+	cout << "\t\t |   5.æ˜¾ç¤ºæ¯”èµ›é¡¹ç›®å„å­¦é™¢åæ¬¡æƒ…å†µ               |  äº”ååˆ¶(1,2,3,4,5)" << endl;
+	cout << "\t\t |   6.ä¿®æ”¹è·å¥–åæ¬¡è®°å½•                         |  åˆ†æ•°--7,5,3,2,1 " << endl;
+	cout << "\t\t |   7.åˆ é™¤æŸå­¦é™¢æˆ–è€…é¡¹ç›®                       |  " << endl;
+	cout << "\t\t |   8.è¯»å–å·²å­˜åœ¨çš„ä¿¡æ¯                         |  " << endl;
+	cout << "\t\t |   9.ä¿å­˜ä¿¡æ¯å¹¶é€€å‡º                           |  " << endl;
 	cout << "\t\t==============================================================" << endl;
-	cout << "\t\tÇëÊäÈëÄãµÄÑ¡Ôñ£¨1~9£©£º";
+	cout << "\t\tè¯·è¾“å…¥ä½ çš„é€‰æ‹©ï¼ˆ1~9ï¼‰ï¼š";
 }//PrintMenu
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	NumCheck
-¹¦ÄÜÃèÊö:
-	Êı×ÖÊäÈë¼æÊı×Ö·¶Î§¼ì²âº¯Êı
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+	æ•°å­—è¾“å…¥å…¼æ•°å­—èŒƒå›´æ£€æµ‹å‡½æ•°
+å‡½æ•°å‚æ•°:
    int* num, int MAX, int MIN
-·µ»ØÖµ:
+è¿”å›å€¼:
 	 *num
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê3ÔÂ15ÈÕ´´½¨±¾Ä£¿é£¬
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´3æœˆ15æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 int NumCheck(int* num, int MAX, int MIN)
-{/*Êı×ÖÊäÈë¼æÊı×Ö·¶Î§¼ì²âº¯Êı*/
+{/*æ•°å­—è¾“å…¥å…¼æ•°å­—èŒƒå›´æ£€æµ‹å‡½æ•°*/
 	while (1)
 	{
 		if (scanf("%d", num) != 1)
-		{//Ê¹ÓÃ scanf º¯ÊıµÄ·µ»ØÖµÀ´¼ì²éÊäÈëÊÇ·ñ³É¹¦¡£Èç¹û·µ»ØÖµ²»Îª1£¬Ôò±íÊ¾ÊäÈëµÄ²»ÊÇÕûÊı£¬ÊäÈëÊ§°Ü¡£
-			printf("\tÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë[%d~~%d]:", MIN, MAX);
-			scanf("%*s");//Çå³ı´íÎóÊäÈë
+		{//ä½¿ç”¨ scanf å‡½æ•°çš„è¿”å›å€¼æ¥æ£€æŸ¥è¾“å…¥æ˜¯å¦æˆåŠŸã€‚å¦‚æœè¿”å›å€¼ä¸ä¸º1ï¼Œåˆ™è¡¨ç¤ºè¾“å…¥çš„ä¸æ˜¯æ•´æ•°ï¼Œè¾“å…¥å¤±è´¥ã€‚
+			printf("\tè¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥[%d~~%d]:", MIN, MAX);
+			scanf("%*s");//æ¸…é™¤é”™è¯¯è¾“å…¥
 		}
 		else if (*num > MAX || *num < MIN) {
-			printf("\tÄãÊäÈëµÄÊı×Ö²»·ûºÏ·¶Î§£¬ÇëÊäÈë[%d~~%d]:", MIN, MAX);
+			printf("\tä½ è¾“å…¥çš„æ•°å­—ä¸ç¬¦åˆèŒƒå›´ï¼Œè¯·è¾“å…¥[%d~~%d]:", MIN, MAX);
 		}
 		else
 			break;
@@ -239,143 +239,143 @@ int NumCheck(int* num, int MAX, int MIN)
 	}
 	return *num;
 }
-/****************************************ĞÅÏ¢ÊäÈë*******************************************************************/
+/****************************************ä¿¡æ¯è¾“å…¥*******************************************************************/
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	InitImfomation
-¹¦ÄÜÃèÊö:
-   ³õÊ¼»¯ĞÅÏ¢
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+   åˆå§‹åŒ–ä¿¡æ¯
+å‡½æ•°å‚æ•°:
    collegeNode** Chead, collegeNode** Cend, eventNode** Ehead, eventNode** Eend
-·µ»ØÖµ:
-	ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê3ÔÂ16ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´3æœˆ16æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
-void InitImfomation(collegeNode** Chead, collegeNode** Cend, eventNode** Ehead, eventNode** Eend)//Ö¸ÕëµÄÖ¸Õë
-//³õÊ¼»¯ĞÅÏ¢
+void InitImfomation(collegeNode** Chead, collegeNode** Cend, eventNode** Ehead, eventNode** Eend)//æŒ‡é’ˆçš„æŒ‡é’ˆ
+//åˆå§‹åŒ–ä¿¡æ¯
 {
-	int college_num;//Â¼ÈëÑ§ÔºµÄ¸öÊı
-	int event_num;  //Â¼ÈëÏîÄ¿µÄ¸öÊı
+	int college_num;//å½•å…¥å­¦é™¢çš„ä¸ªæ•°
+	int event_num;  //å½•å…¥é¡¹ç›®çš„ä¸ªæ•°
 
-	if (*Chead == NULL) {//µÚÒ»´ÎÂ¼Èë×îµÍĞèÒª3¸öÑ§Ôº
-		cout << "\tÂ¼ÈëÑ§ÔºµÄ¸öÊı£¨3~25£©:";
+	if (*Chead == NULL) {//ç¬¬ä¸€æ¬¡å½•å…¥æœ€ä½éœ€è¦3ä¸ªå­¦é™¢
+		cout << "\tå½•å…¥å­¦é™¢çš„ä¸ªæ•°ï¼ˆ3~25ï¼‰:";
 		college_num = NumCheck(&college_num, 25, 3);
 		collegeCount += college_num;
 	}
 	else {
-		cout << "\tÂ¼ÈëÑ§ÔºµÄ¸öÊı£¨0~20£©:";
+		cout << "\tå½•å…¥å­¦é™¢çš„ä¸ªæ•°ï¼ˆ0~20ï¼‰:";
 		college_num = NumCheck(&college_num, 20, 0);
 		collegeCount += college_num;
 	}
 
-	cout << "\tÂ¼ÈëÏîÄ¿µÄ¸öÊı£¨0~20£©:";
+	cout << "\tå½•å…¥é¡¹ç›®çš„ä¸ªæ•°ï¼ˆ0~20ï¼‰:";
 	event_num = NumCheck(&event_num, 20, 0);
 	system("cls");
 
 	for (int i = 1; i <= college_num; i++)
-	{//Ôö¼ÓÑ§Ôº½Úµã
+	{//å¢åŠ å­¦é™¢èŠ‚ç‚¹
 		GetCollegeNode(Chead, Cend);
 	}
 	system("cls");
 	for (int i = 1; i <= event_num; i++)
-	{//Ôö¼ÓÏîÄ¿½Úµã²¢³õÊ¼»¯ÏîÄ¿µÄ³É¼¨
+	{//å¢åŠ é¡¹ç›®èŠ‚ç‚¹å¹¶åˆå§‹åŒ–é¡¹ç›®çš„æˆç»©
 		GetEventNode(Ehead, Eend);
 		InitGrade(*Ehead, *Chead, location++);
 	}
 }
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	InitGrade
-¹¦ÄÜÃèÊö:
-   ³õÊ¼»¯³É¼¨ĞÅÏ¢
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+   åˆå§‹åŒ–æˆç»©ä¿¡æ¯
+å‡½æ•°å‚æ•°:
   eventNode* ENode, collegeNode* Chead,int location
-·µ»ØÖµ:
-	ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê3ÔÂ16ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´3æœˆ16æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void  InitGrade(eventNode* ENode, collegeNode* Chead, int location)
-{//³õÊ¼»¯³É¼¨ĞÅÏ¢
+{//åˆå§‹åŒ–æˆç»©ä¿¡æ¯
 
 	for (int j = 0; j < location; j++)
 	{
 		ENode = ENode->next;
-	}//¶¨Î»µ½µ±Ç°ÊäÈëÏîÄ¿½Úµã
+	}//å®šä½åˆ°å½“å‰è¾“å…¥é¡¹ç›®èŠ‚ç‚¹
 
 	collegeNode* temp = Chead;
 	
 	int count = 0;
 	while (temp)
-	{//Í³¼ÆÑ§Ğ£¸öÊı
+	{//ç»Ÿè®¡å­¦æ ¡ä¸ªæ•°
 		count++;
 		temp = temp->next;
 	}temp = Chead;
 
 	if (ENode->sex == 1)
-		printf("\tÄĞ×Ó%sÏîÄ¿²ÎÈüÑ§ÔºÊıÎª£º", ENode->eventName);
+		printf("\tç”·å­%sé¡¹ç›®å‚èµ›å­¦é™¢æ•°ä¸ºï¼š", ENode->eventName);
 	else
-		printf("\tÅ®×Ó%sÏîÄ¿²úÈüÑ§ÔºÊıÎª£º", ENode->eventName);
+		printf("\tå¥³å­%sé¡¹ç›®äº§èµ›å­¦é™¢æ•°ä¸ºï¼š", ENode->eventName);
 	NumCheck(&(ENode->competeCollege), collegeCount, 1);
 	system("cls");
 
 	while (temp)
 	{
 		printf("\t%d.%s\n", temp->collegeID, temp->collegeName);
-		temp = temp->next;//´òÓ¡³öÑ§ÔººÍ¶ÔÓ¦±àºÅ·½±ãÂ¼Èë
+		temp = temp->next;//æ‰“å°å‡ºå­¦é™¢å’Œå¯¹åº”ç¼–å·æ–¹ä¾¿å½•å…¥
 	}printf("\n");
 
 	if (ENode->sex == 1)
-		printf("\tÄĞ×Ó%s %d¸öÑ§Ôº²ÎÈü È¡Ç°%dÃû¼Æ·Ö\n\n", ENode->eventName, ENode->competeCollege, ENode->gradeWeight);
+		printf("\tç”·å­%s %dä¸ªå­¦é™¢å‚èµ› å–å‰%dåè®¡åˆ†\n\n", ENode->eventName, ENode->competeCollege, ENode->gradeWeight);
 	else
-		printf("\tÅ®×Ó%s %d¸öÑ§Ôº²ÎÈü È¡Ç°%dÃû¼Æ·Ö\n\n", ENode->eventName, ENode->competeCollege, ENode->gradeWeight);
+		printf("\tå¥³å­%s %dä¸ªå­¦é™¢å‚èµ› å–å‰%dåè®¡åˆ†\n\n", ENode->eventName, ENode->competeCollege, ENode->gradeWeight);
 
-	int choice = 0;//Ñ¡ÔñµÄÃû´Î
+	int choice = 0;//é€‰æ‹©çš„åæ¬¡
 
 	for (int i = 1; i <= ENode->competeCollege; i++)
-	{//Í¨¹ıÂ¼ÈëÑ§ÔºµÄÃû´ÎÀ´Í³¼Æ·ÖÊı
-		printf("\t»ñµÃµÚ%dÃûµÄÑ§ÔºÊÇ<ÊäÈë1-%dµÄ±àºÅ>£º", i, count);
+	{//é€šè¿‡å½•å…¥å­¦é™¢çš„åæ¬¡æ¥ç»Ÿè®¡åˆ†æ•°
+		printf("\tè·å¾—ç¬¬%dåçš„å­¦é™¢æ˜¯<è¾“å…¥1-%dçš„ç¼–å·>ï¼š", i, count);
 		choice = NumCheck(&choice, count, 1);
-		ENode->awardCollege[i] = choice;//Â¼ÈëÃû´Î
+		ENode->awardCollege[i] = choice;//å½•å…¥åæ¬¡
 		AddCollegeGrade(ENode, Chead, choice, i);
 	}
 	system("pause");
 }
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	GetEventNode
-¹¦ÄÜÃèÊö:
-   ³õÊ¼»¯ÏîÄ¿ĞÅÏ¢(Î²²å·¨½¨Á¢µ¥Á´±í)
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+   åˆå§‹åŒ–é¡¹ç›®ä¿¡æ¯(å°¾æ’æ³•å»ºç«‹å•é“¾è¡¨)
+å‡½æ•°å‚æ•°:
    eventNode** Ehead, eventNode** Eend
-·µ»ØÖµ:
-	ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê3ÔÂ21ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´3æœˆ21æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void GetEventNode(eventNode** Ehead, eventNode** Eend)
-{//³õÊ¼»¯ÏîÄ¿ĞÅÏ¢
+{//åˆå§‹åŒ–é¡¹ç›®ä¿¡æ¯
 	int gradeWeigth = 0;
-	eventNode* ENODE = (eventNode*)malloc(sizeof(eventNode));//ÉêÇëÄÚ´æ
+	eventNode* ENODE = (eventNode*)malloc(sizeof(eventNode));//ç”³è¯·å†…å­˜
 
-	printf("\tÇëÊäÈëµÚ%d¸öÏîÄ¿µÄÃû³Æ£º", ++id_event);
+	printf("\tè¯·è¾“å…¥ç¬¬%dä¸ªé¡¹ç›®çš„åç§°ï¼š", ++id_event);
 	ENODE->eventID = id_event;
 	scanf("%s", &ENODE->eventName);
 	fflush(stdin);
 
 	while (1)
 	{
-		printf("\tÊäÈëµÄÊÇÄĞ×ÓÏîÄ¿(1)»¹ÊÇÅ®×ÓÏîÄ¿(0):");
+		printf("\tè¾“å…¥çš„æ˜¯ç”·å­é¡¹ç›®(1)è¿˜æ˜¯å¥³å­é¡¹ç›®(0):");
 		NumCheck(&(ENODE->sex), 1, 0);
 
 		while (2)
 		{
 			if (ENODE->sex == 1)
-				printf("\tÄĞ×Ó%sÏîÄ¿", ENODE->eventName);
+				printf("\tç”·å­%sé¡¹ç›®", ENODE->eventName);
 			else
-				printf("\tÅ®×Ó%sÏîÄ¿Â¼Èë", ENODE->eventName);
-			cout << "Ç°ÈıÃû(3)/Ç°ÎåÃû(5)»ñµÃ·ÖÊı£º";
+				printf("\tå¥³å­%sé¡¹ç›®å½•å…¥", ENODE->eventName);
+			cout << "å‰ä¸‰å(3)/å‰äº”å(5)è·å¾—åˆ†æ•°ï¼š";
 			scanf("%d", &gradeWeigth);
 			fflush(stdin);
 
@@ -390,7 +390,7 @@ void GetEventNode(eventNode** Ehead, eventNode** Eend)
 				break;
 			}
 			else
-				cout << "\tÇëÊäÈë[3,5]!" << endl;
+				cout << "\tè¯·è¾“å…¥[3,5]!" << endl;
 		}//while2
 		break;
 	}//while1
@@ -399,27 +399,27 @@ void GetEventNode(eventNode** Ehead, eventNode** Eend)
 	if (*Ehead == NULL)
 		*Ehead = ENODE;
 	else
-		(*Eend)->next = ENODE;//Î²²å·¨²åÈëĞÂ½Úµã
+		(*Eend)->next = ENODE;//å°¾æ’æ³•æ’å…¥æ–°èŠ‚ç‚¹
 
 	*Eend = ENODE;
 }
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	GetCollegeNode
-¹¦ÄÜÃèÊö:
-   ³õÊ¼»¯Ñ§ÔºĞÅÏ¢(Î²²å·¨½¨Á¢µ¥Á´±í)
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+   åˆå§‹åŒ–å­¦é™¢ä¿¡æ¯(å°¾æ’æ³•å»ºç«‹å•é“¾è¡¨)
+å‡½æ•°å‚æ•°:
    collegeNode** Chead, collegeNode** Cend
-·µ»ØÖµ:
-	ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê3ÔÂ19ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´3æœˆ19æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
-void GetCollegeNode(collegeNode** Chead, collegeNode** Cend)//Ö¸ÕëµÄÖ¸Õë
-{//³õÊ¼»¯Ñ§ÔºĞÅÏ¢(Î²²å·¨½¨Á¢µ¥Á´±í)
-	collegeNode* CNODE = (collegeNode*)malloc(sizeof(collegeNode));//ÎªĞÂ½ÚµãÉêÇë¿Õ¼ä
+void GetCollegeNode(collegeNode** Chead, collegeNode** Cend)//æŒ‡é’ˆçš„æŒ‡é’ˆ
+{//åˆå§‹åŒ–å­¦é™¢ä¿¡æ¯(å°¾æ’æ³•å»ºç«‹å•é“¾è¡¨)
+	collegeNode* CNODE = (collegeNode*)malloc(sizeof(collegeNode));//ä¸ºæ–°èŠ‚ç‚¹ç”³è¯·ç©ºé—´
 
-	printf("\tÇëÊäÈëµÚ%d¸öÑ§ÔºµÄÃû³Æ£º", ++id_college);
+	printf("\tè¯·è¾“å…¥ç¬¬%dä¸ªå­¦é™¢çš„åç§°ï¼š", ++id_college);
 	CNODE->collegeID = id_college;
 	scanf("%s", &CNODE->collegeName);
 	fflush(stdin);
@@ -429,34 +429,34 @@ void GetCollegeNode(collegeNode** Chead, collegeNode** Cend)//Ö¸ÕëµÄÖ¸Õë
 	CNODE->womGrade = 0;
 
 	if (*Chead == NULL)
-		*Chead = CNODE;//°ÑĞÂ½ÚµãµÄµØÖ·¸øÍ·Ö¸Õë£¬¾ÍÊÇÈÃÍ·Ö¸ÕëÖ¸ÏòĞÂ½Úµã£¨¾ÍÒ»´Î£¬Ö¸ÏòÍ·½Úµã£©
+		*Chead = CNODE;//æŠŠæ–°èŠ‚ç‚¹çš„åœ°å€ç»™å¤´æŒ‡é’ˆï¼Œå°±æ˜¯è®©å¤´æŒ‡é’ˆæŒ‡å‘æ–°èŠ‚ç‚¹ï¼ˆå°±ä¸€æ¬¡ï¼ŒæŒ‡å‘å¤´èŠ‚ç‚¹ï¼‰
 	else
-		(*Cend)->next = CNODE;//°ÑĞÂ½ÚµãµÄµØÖ·¸³Öµ¸øÉÏÒ»¸ö½ÚµãµÄÖ¸ÕëÓò,ÊÇÉÏÒ»¸ö½ÚµãµÄÖ¸ÕëÖ¸ÏòĞÂ½Úµã   
+		(*Cend)->next = CNODE;//æŠŠæ–°èŠ‚ç‚¹çš„åœ°å€èµ‹å€¼ç»™ä¸Šä¸€ä¸ªèŠ‚ç‚¹çš„æŒ‡é’ˆåŸŸ,æ˜¯ä¸Šä¸€ä¸ªèŠ‚ç‚¹çš„æŒ‡é’ˆæŒ‡å‘æ–°èŠ‚ç‚¹   
 
-	*Cend = CNODE;//°ÑĞÂ½ÚµãµÄµØÖ·¸³Öµ¸øÎ²Ö¸Õë£¬Ê¹Î²Ö¸ÕëÖ¸ÏòĞÂµÄÎ²½Úµã£¬Î²²åÍê³É
+	*Cend = CNODE;//æŠŠæ–°èŠ‚ç‚¹çš„åœ°å€èµ‹å€¼ç»™å°¾æŒ‡é’ˆï¼Œä½¿å°¾æŒ‡é’ˆæŒ‡å‘æ–°çš„å°¾èŠ‚ç‚¹ï¼Œå°¾æ’å®Œæˆ
 
 }//GetCollegeNode
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	AddCollegeGrade
-¹¦ÄÜÃèÊö:
-   Ìí¼Ó³É¼¨
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+   æ·»åŠ æˆç»©
+å‡½æ•°å‚æ•°:
   eventNode* ENode, collegeNode* Chead,int intID,int ranking
-·µ»ØÖµ:
-	ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê3ÔÂ18ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´3æœˆ18æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void AddCollegeGrade(eventNode* ENode, collegeNode* Chead, int intID, int ranking)
-{//Ìí¼Ó³É¼¨
+{//æ·»åŠ æˆç»©
 	collegeNode* temp = Chead;
 	while (temp)
 	{
 		if (temp->collegeID == intID)
-		{//ÕÒµ½¶ÔÓ¦Ñ§Ğ£         
+		{//æ‰¾åˆ°å¯¹åº”å­¦æ ¡         
 			if (ENode->sex == 1)
-			{//ÄĞ×Ó
+			{//ç”·å­
 				if (ENode->gradeWeight == 3) {
 					temp->manGrade += grade_3[ranking - 1];
 					temp->collegeGrade += grade_3[ranking - 1];
@@ -467,7 +467,7 @@ void AddCollegeGrade(eventNode* ENode, collegeNode* Chead, int intID, int rankin
 				}
 			}
 
-			else {//Å®×Ó
+			else {//å¥³å­
 				if (ENode->gradeWeight == 3)
 				{
 					temp->womGrade += grade_3[ranking - 1];
@@ -483,146 +483,146 @@ void AddCollegeGrade(eventNode* ENode, collegeNode* Chead, int intID, int rankin
 		temp = temp->next;
 	}//while
 }
-/******************************************²éÕÒ*********************************************************************/
+/******************************************æŸ¥æ‰¾*********************************************************************/
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	Search
-¹¦ÄÜÃèÊö:
-	°´ ±àºÅ »òÕß Ãû³Æ ²éÑ¯ Ñ§ÔºµÄÇé¿ö
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+	æŒ‰ ç¼–å· æˆ–è€… åç§° æŸ¥è¯¢ å­¦é™¢çš„æƒ…å†µ
+å‡½æ•°å‚æ•°:
    collegeNode* Chead
-·µ»ØÖµ:
-	ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê4ÔÂ5ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´4æœˆ5æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void Search(collegeNode* Chead, eventNode* ENode)
-{//°´ ±àºÅ »òÕß Ãû³Æ ²éÑ¯ Ñ§ÔºµÄÇé¿ö
+{//æŒ‰ ç¼–å· æˆ–è€… åç§° æŸ¥è¯¢ å­¦é™¢çš„æƒ…å†µ
 	if (!Chead || !ENode) {
 		printf("====================\n");
-		printf("µ±Ç°Ã»ÓĞÈÎºÎÊı¾İ\n");
+		printf("å½“å‰æ²¡æœ‰ä»»ä½•æ•°æ®\n");
 		printf("====================\n");
 		system("pause");
 		return;
 	}
 
-	int searchType = 0; // ²éÑ¯ÀàĞÍ
-	int searchKey = 0;  // ²éÑ¯¹Ø¼ü×Ö
+	int searchType = 0; // æŸ¥è¯¢ç±»å‹
+	int searchKey = 0;  // æŸ¥è¯¢å…³é”®å­—
 	char name[50];
-	printf("\t1.°´Ñ§Ôº±àºÅ²éÑ¯\n\t2.°´Ñ§ÔºÃû³Æ²éÑ¯\n");
-	printf("\tÇëÑ¡Ôñ²éÑ¯·½Ê½£º");
+	printf("\t1.æŒ‰å­¦é™¢ç¼–å·æŸ¥è¯¢\n\t2.æŒ‰å­¦é™¢åç§°æŸ¥è¯¢\n");
+	printf("\tè¯·é€‰æ‹©æŸ¥è¯¢æ–¹å¼ï¼š");
 	searchType = NumCheck(&searchType, 2, 1);
 	if (searchType == 1) {
-		printf("\tÇëÊäÈëÑ§Ôº±àºÅ£º");
+		printf("\tè¯·è¾“å…¥å­¦é™¢ç¼–å·ï¼š");
 		searchKey = NumCheck(&searchKey, 100, 1);
 	}
 	else {
-		printf("\tÇëÊäÈëÑ§ÔºÃû³Æ£º");
+		printf("\tè¯·è¾“å…¥å­¦é™¢åç§°ï¼š");
 		scanf("%s", name);
 	}
 
 	int eventId = 0;
 	eventNode* tempE = ENode;
-	printf("\tÇëÊäÈëÒª²éÑ¯µÄ±ÈÈüÏîÄ¿ID£º");
+	printf("\tè¯·è¾“å…¥è¦æŸ¥è¯¢çš„æ¯”èµ›é¡¹ç›®IDï¼š");
 	eventId = NumCheck(&eventId, 100, 1);
 
-	printf("¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\n");
+	printf("â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n");
 	while (tempE) 
 	{
-		if (tempE->eventID == eventId)//ÈôÕÒµ½ÁËÒª²éÑ¯µÄ±ÈÈüÏîÄ¿
+		if (tempE->eventID == eventId)//è‹¥æ‰¾åˆ°äº†è¦æŸ¥è¯¢çš„æ¯”èµ›é¡¹ç›®
 		{
 			collegeNode* tempC = Chead;
-			while (tempC)//±éÀúÑ§Ôº½Úµã
+			while (tempC)//éå†å­¦é™¢èŠ‚ç‚¹
 			{
-				if (searchType == 1 && tempC->collegeID == searchKey)//Í¨¹ıÑ§ÔºID²éÑ¯µÄ·½·¨¶øÇÒÕÒµ½ÁË¶ÔÓ¦µÄÑ§Ôº
+				if (searchType == 1 && tempC->collegeID == searchKey)//é€šè¿‡å­¦é™¢IDæŸ¥è¯¢çš„æ–¹æ³•è€Œä¸”æ‰¾åˆ°äº†å¯¹åº”çš„å­¦é™¢
 				{
-					if (tempE->competeCollege > 0)//¸ÃÏîÄ¿ÓĞ²ÎÈüÏîÄ¿
+					if (tempE->competeCollege > 0)//è¯¥é¡¹ç›®æœ‰å‚èµ›é¡¹ç›®
 					{
 						int i;
-						for (i = 1; i <= tempE->competeCollege; i++) //±éÀú²ÎÈüµÄÑ§Ôº
+						for (i = 1; i <= tempE->competeCollege; i++) //éå†å‚èµ›çš„å­¦é™¢
 						{
-							if (tempC->collegeID == tempE->awardCollege[i])//Èç¸ÃÑ§ÔºÔÚ´ËÏîÄ¿²Î¼ÓÁË±ÈÈü
-							{//Êä³öÑ§ÔºµÄ×ÜÌåÇé¿öºÍ¸ÃÑ§ÔºÔÚÕâ¸öÏîÄ¿µÄÅÅÃû
-								printf("\tÑ§Ôº±àºÅ(Ãû³Æ)\t\tÍÅÌå×Ü·Ö\tÄĞÍÅ×Ü·Ö\tÅ®ÍÅ×Ü·Ö\tÔÚ%sÏîÄ¿ÖĞÅÅÃû\n",tempE->eventName);
+							if (tempC->collegeID == tempE->awardCollege[i])//å¦‚è¯¥å­¦é™¢åœ¨æ­¤é¡¹ç›®å‚åŠ äº†æ¯”èµ›
+							{//è¾“å‡ºå­¦é™¢çš„æ€»ä½“æƒ…å†µå’Œè¯¥å­¦é™¢åœ¨è¿™ä¸ªé¡¹ç›®çš„æ’å
+								printf("\tå­¦é™¢ç¼–å·(åç§°)\t\tå›¢ä½“æ€»åˆ†\tç”·å›¢æ€»åˆ†\tå¥³å›¢æ€»åˆ†\tåœ¨%sé¡¹ç›®ä¸­æ’å\n",tempE->eventName);
 								printf("\t%d.%-15s\t%-3d\t\t%-3d\t\t%-3d\t\t%d\n", tempC->collegeID, tempC->collegeName, tempC->collegeGrade, tempC->manGrade, tempC->womGrade, i);
-								printf("¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\n");
+								printf("â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n");
 								system("pause");
 								return;
 							}
 						}
-					}//Èç¸ÃÑ§ÔºÃ»ÓĞÔÚ´ËÏîÄ¿²Î¼ÓÁË±ÈÈü£¬ÊäÈë×ÜÌåÇé¿öÌáÊ¾ÎŞÅÅÃû
-					printf("\tÑ§Ôº±àºÅ(Ãû³Æ)\t\tÍÅÌå×Ü·Ö\tÄĞÍÅ×Ü·Ö\tÅ®ÍÅ×Ü·Ö\tÔÚ%sÏîÄ¿ÖĞÅÅÃû\n", tempE->eventName);
-					printf("\t%d.%-15s\t%-3d\t\t%-3d\t\t%-3d\t\tÎŞ\n", tempC->collegeID, tempC->collegeName, tempC->collegeGrade, tempC->manGrade, tempC->womGrade);
-					printf("¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\n");
+					}//å¦‚è¯¥å­¦é™¢æ²¡æœ‰åœ¨æ­¤é¡¹ç›®å‚åŠ äº†æ¯”èµ›ï¼Œè¾“å…¥æ€»ä½“æƒ…å†µæç¤ºæ— æ’å
+					printf("\tå­¦é™¢ç¼–å·(åç§°)\t\tå›¢ä½“æ€»åˆ†\tç”·å›¢æ€»åˆ†\tå¥³å›¢æ€»åˆ†\tåœ¨%sé¡¹ç›®ä¸­æ’å\n", tempE->eventName);
+					printf("\t%d.%-15s\t%-3d\t\t%-3d\t\t%-3d\t\tæ— \n", tempC->collegeID, tempC->collegeName, tempC->collegeGrade, tempC->manGrade, tempC->womGrade);
+					printf("â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n");
 					system("pause");
 					return;
 				}
-				else if (searchType == 2 && strcmp(tempC->collegeName, name) == 0) //Í¨¹ıÑ§ÔºÃû³Æ²éÑ¯µÄ·½·¨¶øÇÒÕÒµ½ÁË¶ÔÓ¦µÄÑ§Ôº
+				else if (searchType == 2 && strcmp(tempC->collegeName, name) == 0) //é€šè¿‡å­¦é™¢åç§°æŸ¥è¯¢çš„æ–¹æ³•è€Œä¸”æ‰¾åˆ°äº†å¯¹åº”çš„å­¦é™¢
 				{
-					if (tempE->competeCollege > 0)//¸ÃÏîÄ¿ÓĞ²ÎÈüÏîÄ¿
+					if (tempE->competeCollege > 0)//è¯¥é¡¹ç›®æœ‰å‚èµ›é¡¹ç›®
 					{
 						int i;
-						for (i = 1; i <= tempE->competeCollege; i++) //±éÀú²ÎÈüµÄÑ§Ôº
-						{//Êä³öÑ§ÔºµÄ×ÜÌåÇé¿öºÍ¸ÃÑ§ÔºÔÚÕâ¸öÏîÄ¿µÄÅÅÃû
-							if (tempC->collegeID == tempE->awardCollege[i])//Èç¸ÃÑ§ÔºÔÚ´ËÏîÄ¿²Î¼ÓÁË±ÈÈü
+						for (i = 1; i <= tempE->competeCollege; i++) //éå†å‚èµ›çš„å­¦é™¢
+						{//è¾“å‡ºå­¦é™¢çš„æ€»ä½“æƒ…å†µå’Œè¯¥å­¦é™¢åœ¨è¿™ä¸ªé¡¹ç›®çš„æ’å
+							if (tempC->collegeID == tempE->awardCollege[i])//å¦‚è¯¥å­¦é™¢åœ¨æ­¤é¡¹ç›®å‚åŠ äº†æ¯”èµ›
 							{
-								printf("\tÑ§Ôº±àºÅ(Ãû³Æ)\t\tÍÅÌå×Ü·Ö\tÄĞÍÅ×Ü·Ö\tÅ®ÍÅ×Ü·Ö\tÔÚ%sÏîÄ¿ÖĞÅÅÃû\n", tempE->eventName);
+								printf("\tå­¦é™¢ç¼–å·(åç§°)\t\tå›¢ä½“æ€»åˆ†\tç”·å›¢æ€»åˆ†\tå¥³å›¢æ€»åˆ†\tåœ¨%sé¡¹ç›®ä¸­æ’å\n", tempE->eventName);
 								printf("\t%d.%-15s\t%-3d\t\t%-3d\t\t%-3d\t\t%d\n", tempC->collegeID, tempC->collegeName, tempC->collegeGrade, tempC->manGrade, tempC->womGrade, i);
-								printf("¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\n");
+								printf("â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n");
 								system("pause");
 								return;
 							}
 						}
-					}//Èç¸ÃÑ§ÔºÃ»ÓĞÔÚ´ËÏîÄ¿²Î¼ÓÁË±ÈÈü£¬ÊäÈë×ÜÌåÇé¿öÌáÊ¾ÎŞÅÅ
-					printf("\tÑ§Ôº±àºÅ(Ãû³Æ)\t\tÍÅÌå×Ü·Ö\tÄĞÍÅ×Ü·Ö\tÅ®ÍÅ×Ü·Ö\tÔÚ%sÏîÄ¿ÖĞÅÅÃû\n", tempE->eventName);
-					printf("\t%d.%-15s\t%-3d\t\t%-3d\t\t%-3d\t\tÎŞ\n", tempC->collegeID, tempC->collegeName, tempC->collegeGrade, tempC->manGrade, tempC->womGrade);
-					printf("¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\n"); 
+					}//å¦‚è¯¥å­¦é™¢æ²¡æœ‰åœ¨æ­¤é¡¹ç›®å‚åŠ äº†æ¯”èµ›ï¼Œè¾“å…¥æ€»ä½“æƒ…å†µæç¤ºæ— æ’
+					printf("\tå­¦é™¢ç¼–å·(åç§°)\t\tå›¢ä½“æ€»åˆ†\tç”·å›¢æ€»åˆ†\tå¥³å›¢æ€»åˆ†\tåœ¨%sé¡¹ç›®ä¸­æ’å\n", tempE->eventName);
+					printf("\t%d.%-15s\t%-3d\t\t%-3d\t\t%-3d\t\tæ— \n", tempC->collegeID, tempC->collegeName, tempC->collegeGrade, tempC->manGrade, tempC->womGrade);
+					printf("â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n"); 
 					system("pause"); 
 					return;
 				}
 				tempC = tempC->next;
 			} //while (tempC)
-			printf("====================\n"); printf("Î´ÕÒµ½Ïà¹ØÑ§ÔºĞÅÏ¢\n"); printf("====================\n");
+			printf("====================\n"); printf("æœªæ‰¾åˆ°ç›¸å…³å­¦é™¢ä¿¡æ¯\n"); printf("====================\n");
 			system("pause");
 			return;
 		}
 		tempE = tempE->next;
 	} //while(tempE)
-	printf("====================\n"); printf("Î´ÕÒµ½Ïà¹Ø±ÈÈüÏîÄ¿\n"); printf("====================\n"); 
+	printf("====================\n"); printf("æœªæ‰¾åˆ°ç›¸å…³æ¯”èµ›é¡¹ç›®\n"); printf("====================\n"); 
 	system("pause"); 
 	return;
 }
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	PrintEvent
-¹¦ÄÜÃèÊö:
-   ÏÔÊ¾±ÈÈüÏîÄ¿¸÷Ñ§ÔºÃû´ÎÇé¿ö
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+   æ˜¾ç¤ºæ¯”èµ›é¡¹ç›®å„å­¦é™¢åæ¬¡æƒ…å†µ
+å‡½æ•°å‚æ•°:
    collegeNode* Chead, eventNode* ENode
-·µ»ØÖµ:
-	 ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê4ÔÂ20ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	 æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´4æœˆ20æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void PrintEvent(collegeNode* Chead, eventNode* ENode)
-{// ÏÔÊ¾±ÈÈüÏîÄ¿¸÷Ñ§ÔºÃû´ÎÇé¿ö
+{// æ˜¾ç¤ºæ¯”èµ›é¡¹ç›®å„å­¦é™¢åæ¬¡æƒ…å†µ
 	if (!ENode)
 	{
 		printf("====================\n");
-		printf("µ±Ç°Ã»ÓĞÈÎºÎÊı¾İ\n");
+		printf("å½“å‰æ²¡æœ‰ä»»ä½•æ•°æ®\n");
 		printf("====================\n");
 		system("pause");
 		return;
 	}
 	while (ENode)
 	{
-		printf("¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\n");
-		printf("\t\tµÚ%d¸ö±ÈÈüÏîÄ¿£º%s", ENode->eventID, ENode->eventName);
+		printf("â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n");
+		printf("\t\tç¬¬%dä¸ªæ¯”èµ›é¡¹ç›®ï¼š%s", ENode->eventID, ENode->eventName);
 
 		if (ENode->sex == 1)
-			printf("\t<ÄĞ×Ó>Ç°%dÃû»ñ½±\n\n", ENode->gradeWeight);
+			printf("\t<ç”·å­>å‰%dåè·å¥–\n\n", ENode->gradeWeight);
 		else
-			printf("\t<Å®×Ó>Ç°%dÃû»ñ½±\n\n", ENode->gradeWeight);
+			printf("\t<å¥³å­>å‰%dåè·å¥–\n\n", ENode->gradeWeight);
 
 		for (int i = 1; i <= ENode->competeCollege; i++)
 		{
@@ -630,34 +630,34 @@ void PrintEvent(collegeNode* Chead, eventNode* ENode)
 			while (temp)
 			{
 				if (ENode->awardCollege[i] == temp->collegeID)
-					printf("\tµÚ%dÃû£º%-15s", i, temp->collegeName);
+					printf("\tç¬¬%dåï¼š%-15s", i, temp->collegeName);
 				temp = temp->next;
 			}	
 		}	
 		printf("\n");
 		ENode = ENode->next;
 	}
-	printf("¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\n");
+	printf("â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n");
 	system("pause");
 }
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	FindTop
-¹¦ÄÜÃèÊö:
-   °´ÏîÄ¿±àºÅ»òÕßÃû³Æ²éÑ¯È¡µÃÇ°ÈıÃû»òÕßÇ°ÎåÃûµÄÑ§Ğ£
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+   æŒ‰é¡¹ç›®ç¼–å·æˆ–è€…åç§°æŸ¥è¯¢å–å¾—å‰ä¸‰åæˆ–è€…å‰äº”åçš„å­¦æ ¡
+å‡½æ•°å‚æ•°:
    collegeNode* Chead, eventNode* Ehead
-·µ»ØÖµ:
-	 ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê6ÔÂ1ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	 æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´6æœˆ1æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void FindTop(collegeNode* Chead, eventNode* Ehead)
-{//°´ÏîÄ¿±àºÅ»òÕßÃû³Æ²éÑ¯È¡µÃÇ°ÈıÃû»òÕßÇ°ÎåÃûµÄÑ§Ğ£
+{//æŒ‰é¡¹ç›®ç¼–å·æˆ–è€…åç§°æŸ¥è¯¢å–å¾—å‰ä¸‰åæˆ–è€…å‰äº”åçš„å­¦æ ¡
 	if (!Ehead)
 	{
 		printf("====================\n");
-		printf("µ±Ç°Ã»ÓĞÈÎºÎÊı¾İ\n");
+		printf("å½“å‰æ²¡æœ‰ä»»ä½•æ•°æ®\n");
 		printf("====================\n");
 		system("pause");
 		return;
@@ -665,158 +665,158 @@ void FindTop(collegeNode* Chead, eventNode* Ehead)
 	collegeNode* tempC = Chead;
 	eventNode* tempE = Ehead;
 
-	int searchType = 0; // ²éÑ¯ÀàĞÍ
-	int searchKey = 0;  // ²éÑ¯¹Ø¼ü×Ö
+	int searchType = 0; // æŸ¥è¯¢ç±»å‹
+	int searchKey = 0;  // æŸ¥è¯¢å…³é”®å­—
 	char name[50];
-	printf("\t1.°´ÏîÄ¿±àºÅ²éÑ¯\n\t2.°´ÏîÄ¿Ãû³Æ²éÑ¯\n");
-	printf("\tÇëÑ¡Ôñ²éÑ¯·½Ê½£º");
+	printf("\t1.æŒ‰é¡¹ç›®ç¼–å·æŸ¥è¯¢\n\t2.æŒ‰é¡¹ç›®åç§°æŸ¥è¯¢\n");
+	printf("\tè¯·é€‰æ‹©æŸ¥è¯¢æ–¹å¼ï¼š");
 	searchType = NumCheck(&searchType, 2, 1);
 	if (searchType == 1) {
-		printf("\tÇëÊäÈëÏîÄ¿±àºÅ£º");
+		printf("\tè¯·è¾“å…¥é¡¹ç›®ç¼–å·ï¼š");
 		searchKey = NumCheck(&searchKey, 100, 1);
 	}else {
-		printf("\tÇëÊäÈëÏîÄ¿Ãû³Æ£º");
+		printf("\tè¯·è¾“å…¥é¡¹ç›®åç§°ï¼š");
 		scanf("%s", name);
 	}
-	printf("¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\n");
-	while (tempE)//±éÀúÏîÄ¿½Úµã
+	printf("â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n");
+	while (tempE)//éå†é¡¹ç›®èŠ‚ç‚¹
 	{
-		if (searchType == 1 && tempE->eventID == searchKey)//Í¨¹ıId²éÕÒ¶øÇÒÕÒµ½Ö¸¶¨ÏîÄ¿
+		if (searchType == 1 && tempE->eventID == searchKey)//é€šè¿‡IdæŸ¥æ‰¾è€Œä¸”æ‰¾åˆ°æŒ‡å®šé¡¹ç›®
 		{
 			if(tempE->sex==1)
-			printf("\tÄĞ×Ó%sÇ°%dÃû»ñ½±Ñ§Ôº£º\n", tempE->eventName, tempE->gradeWeight);
+			printf("\tç”·å­%så‰%dåè·å¥–å­¦é™¢ï¼š\n", tempE->eventName, tempE->gradeWeight);
 			else
-			printf("\tÅ®×Ó%sÇ°%dÃû»ñ½±Ñ§Ôº£º\n", tempE->eventName, tempE->gradeWeight);
-			for (int i = 1; i <= tempE->gradeWeight; i++)//Êä³öÇ°ÎåÃû»òÕßÇ°ÈıÃû
+			printf("\tå¥³å­%så‰%dåè·å¥–å­¦é™¢ï¼š\n", tempE->eventName, tempE->gradeWeight);
+			for (int i = 1; i <= tempE->gradeWeight; i++)//è¾“å‡ºå‰äº”åæˆ–è€…å‰ä¸‰å
 			{
-				tempC = Chead;//ÖØÖÃ
-				while (tempC) //±éÀúÑ§Ôº½Úµã
+				tempC = Chead;//é‡ç½®
+				while (tempC) //éå†å­¦é™¢èŠ‚ç‚¹
 				{
-					if (tempC->collegeID == tempE->awardCollege[i])//IDÆ¥Åä
+					if (tempC->collegeID == tempE->awardCollege[i])//IDåŒ¹é…
 					{
-						printf("\tµÚ%dÃû£º%-15s", i, tempC->collegeName);
+						printf("\tç¬¬%dåï¼š%-15s", i, tempC->collegeName);
 						break;
 					}
 					tempC = tempC->next;
 				}
 
 			}
-			printf("\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\n");
+			printf("\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n");
 			system("pause");
 			return;
 
 		}
-		else if (searchType == 2 && strcmp(tempE->eventName, name) == 0)//Í¨¹ıname²éÕÒ¶øÇÒÕÒµ½Ö¸¶¨ÏîÄ¿
+		else if (searchType == 2 && strcmp(tempE->eventName, name) == 0)//é€šè¿‡nameæŸ¥æ‰¾è€Œä¸”æ‰¾åˆ°æŒ‡å®šé¡¹ç›®
 		{
 			if (tempE->sex == 1)
-				printf("\tÄĞ×Ó%sÇ°%dÃû»ñ½±Ñ§Ôº£º\n", tempE->eventName, tempE->gradeWeight);
+				printf("\tç”·å­%så‰%dåè·å¥–å­¦é™¢ï¼š\n", tempE->eventName, tempE->gradeWeight);
 			else
-				printf("\tÅ®×Ó%sÇ°%dÃû»ñ½±Ñ§Ôº£º\n", tempE->eventName, tempE->gradeWeight);
-			for (int i = 1; i <= tempE->gradeWeight; i++)//Êä³öÇ°ÎåÃû»òÕßÇ°ÈıÃû
+				printf("\tå¥³å­%så‰%dåè·å¥–å­¦é™¢ï¼š\n", tempE->eventName, tempE->gradeWeight);
+			for (int i = 1; i <= tempE->gradeWeight; i++)//è¾“å‡ºå‰äº”åæˆ–è€…å‰ä¸‰å
 			{
-				tempC = Chead;//ÖØÖÃ
-				while (tempC)//±éÀúÑ§Ôº½Úµã
+				tempC = Chead;//é‡ç½®
+				while (tempC)//éå†å­¦é™¢èŠ‚ç‚¹
 				{
-					if (tempC->collegeID == tempE->awardCollege[i])//IDÆ¥Åä
+					if (tempC->collegeID == tempE->awardCollege[i])//IDåŒ¹é…
 					{
-						printf("\tµÚ%dÃû£º%-15s", i, tempC->collegeName);
+						printf("\tç¬¬%dåï¼š%-15s", i, tempC->collegeName);
 						break;
 					}
 					tempC = tempC->next;
 				}
 
 			}
-			printf("\n¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\n");
+			printf("\nâ€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n");
 			system("pause");
 			return;
 		}
 		tempE = tempE->next;
 	}
 	printf("====================\n");
-	printf("Î´ÕÒµ½Ïà¹Ø±ÈÈüÏîÄ¿\n");
+	printf("æœªæ‰¾åˆ°ç›¸å…³æ¯”èµ›é¡¹ç›®\n");
 	printf("====================\n");
 	system("pause");
 	return;
 
 }
-/******************************************ĞŞ¸Ä/É¾³ı****************************************************************/
+/******************************************ä¿®æ”¹/åˆ é™¤****************************************************************/
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	Delete
-¹¦ÄÜÃèÊö:
-   ¸ù¾İÑ¡Ôñ£¬µ÷ÓÃÏîÄ¿»òÕßÑ§ÔºÉ¾³ıº¯Êı
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+   æ ¹æ®é€‰æ‹©ï¼Œè°ƒç”¨é¡¹ç›®æˆ–è€…å­¦é™¢åˆ é™¤å‡½æ•°
+å‡½æ•°å‚æ•°:
    collegeNode** Chead, eventNode** Ehead
-·µ»ØÖµ:
-	 ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê4ÔÂ20ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	 æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´4æœˆ20æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void Delete(collegeNode** Chead, eventNode** Ehead)
-{//¸ù¾İÑ¡Ôñ£¬µ÷ÓÃÏîÄ¿»òÕßÑ§ÔºÉ¾³ıº¯Êı
+{//æ ¹æ®é€‰æ‹©ï¼Œè°ƒç”¨é¡¹ç›®æˆ–è€…å­¦é™¢åˆ é™¤å‡½æ•°
 	int deleteChoose = 0;
-	printf("\t1.É¾³ıÒ»¸öÑ§Ôº\n\t2.É¾³ıÒ»¸öÏîÄ¿\n\tÇëÑ¡Ôñ£º");
+	printf("\t1.åˆ é™¤ä¸€ä¸ªå­¦é™¢\n\t2.åˆ é™¤ä¸€ä¸ªé¡¹ç›®\n\tè¯·é€‰æ‹©ï¼š");
 	deleteChoose = NumCheck(&deleteChoose, 2, 1);
 	if (deleteChoose == 1)
-		DeleteCollege(Chead, Ehead);//Ñ§ÔºÉ¾³ı
+		DeleteCollege(Chead, Ehead);//å­¦é™¢åˆ é™¤
 	else 
-		DeleteEvent(Chead, Ehead);//ÏîÄ¿É¾³ı
+		DeleteEvent(Chead, Ehead);//é¡¹ç›®åˆ é™¤
 }
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	ModifyGrade
-¹¦ÄÜÃèÊö:
-   ĞŞ¸Ä»ñ½±Ãû´Î¼ÇÂ¼
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+   ä¿®æ”¹è·å¥–åæ¬¡è®°å½•
+å‡½æ•°å‚æ•°:
    eventNode * Ehead, collegeNode * Chead
-·µ»ØÖµ:
-	 ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê4ÔÂ20ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	 æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´4æœˆ20æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void ModifyGrade(eventNode* Ehead, collegeNode* Chead)
-{//ĞŞ¸Ä»ñ½±Ãû´Î¼ÇÂ¼
+{//ä¿®æ”¹è·å¥–åæ¬¡è®°å½•
 
 	if (Chead == NULL || Ehead == NULL)
 	{
 		printf("====================\n");
-		printf("µ±Ç°Ã»ÓĞÈÎºÎÊı¾İ\n");
+		printf("å½“å‰æ²¡æœ‰ä»»ä½•æ•°æ®\n");
 		printf("====================\n");
 		system("pause");
 		return;
 	}
 
-	int eventID;   //ÒªĞŞ¸ÄµÄÏîÄ¿±àºÅ
-	int collegeID; //ÒªĞŞ¸ÄµÄÑ§Ôº±àºÅ
-	int newRanking;//ĞÂÃû´Î
+	int eventID;   //è¦ä¿®æ”¹çš„é¡¹ç›®ç¼–å·
+	int collegeID; //è¦ä¿®æ”¹çš„å­¦é™¢ç¼–å·
+	int newRanking;//æ–°åæ¬¡
 	eventNode* eTemp = Ehead;
 	collegeNode* cTemp = Chead;
 
-	printf("ÇëÊäÈëÒªĞŞ¸ÄµÄÏîÄ¿±àºÅ£º");
+	printf("è¯·è¾“å…¥è¦ä¿®æ”¹çš„é¡¹ç›®ç¼–å·ï¼š");
 	//scanf("%d", &eventID);
 	NumCheck(&eventID, id_event, 1);
-	printf("ÇëÊäÈëÒªĞŞ¸ÄµÄÑ§Ôº±àºÅ£º");
+	printf("è¯·è¾“å…¥è¦ä¿®æ”¹çš„å­¦é™¢ç¼–å·ï¼š");
 	//scanf("%d", &collegeID);
 	NumCheck(&collegeID, collegeCount, 1);
-	printf("ÇëÊäÈëĞÂµÄÅÅÃû£º");
+	printf("è¯·è¾“å…¥æ–°çš„æ’åï¼š");
 	//scanf("%d", &newRanking);
 	NumCheck(&newRanking, id_college, 1);
 
-	while (eTemp) {//¶¨Î»µ½Ö¸¶¨ÏîÄ¿½Úµã
+	while (eTemp) {//å®šä½åˆ°æŒ‡å®šé¡¹ç›®èŠ‚ç‚¹
 		if (eTemp->eventID == eventID) {
 			break;
 		}
 		eTemp = eTemp->next;
 	}
 
-	while (cTemp) {//¶¨Î»µ½Ö¸¶¨Ñ§Ôº½Úµã
+	while (cTemp) {//å®šä½åˆ°æŒ‡å®šå­¦é™¢èŠ‚ç‚¹
 		if (cTemp->collegeID == collegeID) {
 			break;
 		}
 		cTemp = cTemp->next;
 	}
 
-	if (eTemp && cTemp) {//»ñµÃ¾ÉµÄÃû´Î
+	if (eTemp && cTemp) {//è·å¾—æ—§çš„åæ¬¡
 		int oldRanking = 0;
 		for (int i = 1; i <= eTemp->gradeWeight; i++) {
 			if (eTemp->awardCollege[i] == collegeID) {
@@ -825,8 +825,8 @@ void ModifyGrade(eventNode* Ehead, collegeNode* Chead)
 			}
 		}
 
-		if (oldRanking > 0)//´óÓÚÁã¼´Ê¹ÊÇÈ¡ÁË¾ÉµÄÃû´Î£¬ËùÒÔÈ·¶¨¸ÃÔºÔÚÖ¸¶¨ÏîÄ¿ÖĞ»ñ½±
-		{                  //Ëæ¼´½«¾ÉÃû´ÎµÄ»ñ½±¼ÇÂ¼£¬°üÀ¨·ÖÊıÇåÁã
+		if (oldRanking > 0)//å¤§äºé›¶å³ä½¿æ˜¯å–äº†æ—§çš„åæ¬¡ï¼Œæ‰€ä»¥ç¡®å®šè¯¥é™¢åœ¨æŒ‡å®šé¡¹ç›®ä¸­è·å¥–
+		{                  //éšå³å°†æ—§åæ¬¡çš„è·å¥–è®°å½•ï¼ŒåŒ…æ‹¬åˆ†æ•°æ¸…é›¶
 			eTemp->awardCollege[oldRanking] = 0;
 
 			if (eTemp->sex == 1) {
@@ -852,8 +852,8 @@ void ModifyGrade(eventNode* Ehead, collegeNode* Chead)
 			}
 		}
 
-		eTemp->awardCollege[newRanking] = collegeID;//½«ĞÂµÄÃû´ÎµÄÎ»ÖÃ¸³ÖµÎªĞÂµÄÑ§Ôº
-		//²¢ÖØĞÂ¼ÆËã·ÖÊı
+		eTemp->awardCollege[newRanking] = collegeID;//å°†æ–°çš„åæ¬¡çš„ä½ç½®èµ‹å€¼ä¸ºæ–°çš„å­¦é™¢
+		//å¹¶é‡æ–°è®¡ç®—åˆ†æ•°
 		if (eTemp->sex == 1) {
 			if (eTemp->gradeWeight == 3) {
 				cTemp->manGrade += grade_3[newRanking - 1];
@@ -877,58 +877,58 @@ void ModifyGrade(eventNode* Ehead, collegeNode* Chead)
 		}
 	}
 	else {
-		printf("Î´ÕÒµ½Ö¸¶¨µÄÏîÄ¿»òÑ§Ôº\n");
+		printf("æœªæ‰¾åˆ°æŒ‡å®šçš„é¡¹ç›®æˆ–å­¦é™¢\n");
 	}
 }
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	DeleteCollege
-¹¦ÄÜÃèÊö:
-   É¾³ıÑ§Ôº
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+   åˆ é™¤å­¦é™¢
+å‡½æ•°å‚æ•°:
    collegeNode** Chead, eventNode** Ehead
-·µ»ØÖµ:
-	 ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê4ÔÂ19ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	 æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´4æœˆ19æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void  DeleteCollege(collegeNode** Chead, eventNode** Ehead)
-{//É¾³ıÑ§Ôº
+{//åˆ é™¤å­¦é™¢
 	if (*Chead == NULL || *Ehead == NULL)
 	{
 		printf("====================\n");
-		printf("µ±Ç°Ã»ÓĞÈÎºÎÊı¾İ\n");
+		printf("å½“å‰æ²¡æœ‰ä»»ä½•æ•°æ®\n");
 		printf("====================\n");
 		system("pause");
 		return;
 	}
 	int collegeID;
 	char confirm;
-	printf("ÇëÊäÈëÄãÒªÉ¾³ıÑ§ÔºµÄ±àºÅ£º");
+	printf("è¯·è¾“å…¥ä½ è¦åˆ é™¤å­¦é™¢çš„ç¼–å·ï¼š");
 	scanf("%d", &collegeID);
-	printf("\t\tÄãÕæµÄÏëÒªÉ¾³ı±àºÅÎª%dµÄÑ§ÔºÂğ£¬×¢Òâ£¡É¾³ı²Ù×÷²»¿É³·Ïú£¡\n\t\t\tÉ¾³ı£¨y/Y£©È¡Ïû£¨n/N£©:", collegeID);
+	printf("\t\tä½ çœŸçš„æƒ³è¦åˆ é™¤ç¼–å·ä¸º%dçš„å­¦é™¢å—ï¼Œæ³¨æ„ï¼åˆ é™¤æ“ä½œä¸å¯æ’¤é”€ï¼\n\t\t\tåˆ é™¤ï¼ˆy/Yï¼‰å–æ¶ˆï¼ˆn/Nï¼‰:", collegeID);
 	cin >> confirm;
 	if (confirm == 'n' || confirm == 'N')
-		return;//¶ş´ÎÉ¾³ıÈ·¶¨
+		return;//äºŒæ¬¡åˆ é™¤ç¡®å®š
 
 	collegeNode* temp1 = *Chead;
 	collegeNode* temp2 = NULL;
 
 	while (temp1 != NULL && temp1->collegeID != collegeID)
-	{//ÕÒµ½ÒªÉ¾³ıµÄ½Úµã
+	{//æ‰¾åˆ°è¦åˆ é™¤çš„èŠ‚ç‚¹
 		temp2 = temp1;
 		temp1 = temp1->next;
 	}
 	if (temp1 == NULL)
-	{//Ã»ÓĞ¸Ã½Úµã£¬½«·µ»Ø
-		printf("\t\tÎ´ÕÒµ½±àºÅÎª%dµÄÑ§Ôº\n", collegeID);
+	{//æ²¡æœ‰è¯¥èŠ‚ç‚¹ï¼Œå°†è¿”å›
+		printf("\t\tæœªæ‰¾åˆ°ç¼–å·ä¸º%dçš„å­¦é™¢\n", collegeID);
 		system("pause");
 		return;
 	}
-	if (temp2 == NULL) *Chead = temp1->next;//ÈôÒªÉ¾³ıµÄÊÇµÚÒ»¸ö½Úµã
+	if (temp2 == NULL) *Chead = temp1->next;//è‹¥è¦åˆ é™¤çš„æ˜¯ç¬¬ä¸€ä¸ªèŠ‚ç‚¹
 	else temp2->next = temp1->next;
-	free(temp1);//ÊÍ·Å½Úµã
-	collegeCount--;//xÑ§ÔºÀÛ¼ÆÊıÁ¿-1
+	free(temp1);//é‡Šæ”¾èŠ‚ç‚¹
+	collegeCount--;//xå­¦é™¢ç´¯è®¡æ•°é‡-1
 
 	eventNode* etemp = *Ehead;
 	collegeNode* ctemp = *Chead;
@@ -937,7 +937,7 @@ void  DeleteCollege(collegeNode** Chead, eventNode** Ehead)
 	{
 		int j = 1;
 		for (int i = 1; i <=25; i++)
-		{//½«¸ÃÑ§ÔºµÄ»ñ½±¼ÇÂ¼É¾³ı,ºó±ßÅÅÃûµÄÏòÇ°½ø
+		{//å°†è¯¥å­¦é™¢çš„è·å¥–è®°å½•åˆ é™¤,åè¾¹æ’åçš„å‘å‰è¿›
 			if (etemp->awardCollege[i] != collegeID)
 			{
 				etemp->awardCollege[j] = etemp->awardCollege[i];
@@ -949,14 +949,14 @@ void  DeleteCollege(collegeNode** Chead, eventNode** Ehead)
 
 	etemp = *Ehead;
 
-	while (ctemp) {//Ê×ÏÈÇåÁãËùÓĞÑ§ÔºµÄµÃ·Ö
+	while (ctemp) {//é¦–å…ˆæ¸…é›¶æ‰€æœ‰å­¦é™¢çš„å¾—åˆ†
 		ctemp->collegeGrade = 0;
 		ctemp->manGrade = 0;
 		ctemp->womGrade = 0;
 		ctemp = ctemp->next;
 	}
 
-	while (etemp) {//È»ºó±éÀúËùÓĞÏîÄ¿£¬¸ù¾İĞŞ¸ÄºóµÄ»ñ½±¼ÇÂ¼ÖØĞÂ¼ÆËãµÃ·Ö
+	while (etemp) {//ç„¶åéå†æ‰€æœ‰é¡¹ç›®ï¼Œæ ¹æ®ä¿®æ”¹åçš„è·å¥–è®°å½•é‡æ–°è®¡ç®—å¾—åˆ†
 		for (int i = 1; i <= etemp->gradeWeight; i++) {
 			ctemp = *Chead;
 			while (ctemp)
@@ -965,7 +965,7 @@ void  DeleteCollege(collegeNode** Chead, eventNode** Ehead)
 				{
 
 					if (etemp->sex == 1)
-					{//ÄĞ×ÓÏîÄ¿
+					{//ç”·å­é¡¹ç›®
 						if (etemp->gradeWeight == 3)
 						{
 							ctemp->manGrade += grade_3[i - 1];
@@ -980,7 +980,7 @@ void  DeleteCollege(collegeNode** Chead, eventNode** Ehead)
 					}
 
 					else
-					{//Å®×ÓÏîÄ¿
+					{//å¥³å­é¡¹ç›®
 						if (etemp->gradeWeight == 3)
 						{
 							ctemp->womGrade += grade_3[i - 1];
@@ -1000,57 +1000,57 @@ void  DeleteCollege(collegeNode** Chead, eventNode** Ehead)
 	}
 }
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	DeleteEvent
-¹¦ÄÜÃèÊö:
-   É¾³ıÏîÄ¿
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+   åˆ é™¤é¡¹ç›®
+å‡½æ•°å‚æ•°:
    collegeNode** Chead, eventNode** Ehead
-·µ»ØÖµ:
-	 ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê4ÔÂ18ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	 æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´4æœˆ18æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void  DeleteEvent(collegeNode** Chead, eventNode** Ehead)
-{//É¾³ıÏîÄ¿
+{//åˆ é™¤é¡¹ç›®
 	if (*Chead == NULL || *Ehead == NULL)
 	{
 		printf("====================\n");
-		printf("µ±Ç°Ã»ÓĞÈÎºÎÊı¾İ\n");
+		printf("å½“å‰æ²¡æœ‰ä»»ä½•æ•°æ®\n");
 		printf("====================\n");
 		system("pause");
 		return;
 	}
 	int eventID;
 	char confirm;
-	printf("ÇëÊäÈëÄãÒªÉ¾³ıÏîÄ¿µÄ±àºÅ£º");
+	printf("è¯·è¾“å…¥ä½ è¦åˆ é™¤é¡¹ç›®çš„ç¼–å·ï¼š");
 	scanf("%d", &eventID);
-	printf("\t\tÄãÕæµÄÏëÒªÉ¾³ı±àºÅÎª%dµÄÏîÄ¿Âğ£¬×¢Òâ£¡É¾³ı²Ù×÷²»¿É³·Ïú£¡\n\t\t\tÉ¾³ı£¨y/Y£©È¡Ïû£¨n/N£©:", eventID);
+	printf("\t\tä½ çœŸçš„æƒ³è¦åˆ é™¤ç¼–å·ä¸º%dçš„é¡¹ç›®å—ï¼Œæ³¨æ„ï¼åˆ é™¤æ“ä½œä¸å¯æ’¤é”€ï¼\n\t\t\tåˆ é™¤ï¼ˆy/Yï¼‰å–æ¶ˆï¼ˆn/Nï¼‰:", eventID);
 	cin >> confirm;
 	if (confirm == 'n' || confirm == 'N')
-		return;//¶ş´ÎÉ¾³ıÈ·¶¨
+		return;//äºŒæ¬¡åˆ é™¤ç¡®å®š
 
 	eventNode* temp1 = *Ehead;
 	eventNode* temp2 = NULL;
 	collegeNode* temp3 = *Chead;
 
 	while (temp1 != NULL && temp1->eventID != eventID)
-	{//ÕÒµ½ÒªÉ¾³ıµÄ½Úµã
+	{//æ‰¾åˆ°è¦åˆ é™¤çš„èŠ‚ç‚¹
 		temp2 = temp1;
 		temp1 = temp1->next;
 	}
 
 	if (temp1 == NULL)
-	{//Ã»ÓĞ¸Ã½Úµã£¬½«·µ»Ø
-		printf("Î´ÕÒµ½±àºÅÎª%dµÄÏîÄ¿\n", eventID);
+	{//æ²¡æœ‰è¯¥èŠ‚ç‚¹ï¼Œå°†è¿”å›
+		printf("æœªæ‰¾åˆ°ç¼–å·ä¸º%dçš„é¡¹ç›®\n", eventID);
 		system("pause");
 		return;
 	}
 
 	for (int i = 1; i <= temp1->gradeWeight; i++)
-	{//Çå³ıËùÓĞÑ§Ôº´Ó¸ÃÏîÄ¿»ñµÃµÄ·ÖÊı
+	{//æ¸…é™¤æ‰€æœ‰å­¦é™¢ä»è¯¥é¡¹ç›®è·å¾—çš„åˆ†æ•°
 		temp3 = *Chead;
-		if (temp1->sex == 1)//ÄĞ×ÓÏîÄ¿
+		if (temp1->sex == 1)//ç”·å­é¡¹ç›®
 		{
 			while (temp3)
 			{
@@ -1071,7 +1071,7 @@ void  DeleteEvent(collegeNode** Chead, eventNode** Ehead)
 			}
 		}
 
-		else//Å®×ÓÏîÄ¿
+		else//å¥³å­é¡¹ç›®
 		{
 
 			while (temp3)
@@ -1094,28 +1094,28 @@ void  DeleteEvent(collegeNode** Chead, eventNode** Ehead)
 		}
 	}
 
-	if (temp2 == NULL) *Ehead = temp1->next;//ÈôÒªÉ¾³ıµÄÊÇµÚÒ»¸ö½Úµã
+	if (temp2 == NULL) *Ehead = temp1->next;//è‹¥è¦åˆ é™¤çš„æ˜¯ç¬¬ä¸€ä¸ªèŠ‚ç‚¹
 	else temp2->next = temp1->next;
-	free(temp1);//ÊÍ·Å½Úµã 
+	free(temp1);//é‡Šæ”¾èŠ‚ç‚¹ 
 }
-/******************************************ÅÅĞò*******************************************************************/
+/******************************************æ’åº*******************************************************************/
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	Sort
-¹¦ÄÜÃèÊö:ÅÅĞòº¯Êı£¬µ÷ÓÃÈı¸ö¿ìËÙÅÅĞòº¯Êı
-   ´òÓ¡²Ëµ¥
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:æ’åºå‡½æ•°ï¼Œè°ƒç”¨ä¸‰ä¸ªå¿«é€Ÿæ’åºå‡½æ•°
+   æ‰“å°èœå•
+å‡½æ•°å‚æ•°:
    collegeNode** Chead
-·µ»ØÖµ:
-	 ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê5ÔÂ11ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	 æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´5æœˆ11æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void Sort(collegeNode** Chead)
-{//ÅÅĞòº¯Êı£¬µ÷ÓÃÈı¸ö¿ìËÙÅÅĞòº¯Êı
+{//æ’åºå‡½æ•°ï¼Œè°ƒç”¨ä¸‰ä¸ªå¿«é€Ÿæ’åºå‡½æ•°
 	if (*Chead == NULL) {
 		printf("====================\n");
-		printf("µ±Ç°Ã»ÓĞÈÎºÎÊı¾İ\n");
+		printf("å½“å‰æ²¡æœ‰ä»»ä½•æ•°æ®\n");
 		printf("====================\n");
 		system("pause");
 		return;
@@ -1124,179 +1124,179 @@ void Sort(collegeNode** Chead)
 	{
 		int choose;
 	system("cls");
-	cout << "\n\n\t\t 1.°´ ÄĞÍÅÌå×Ü·Ö ½µĞòÊä³ö " << endl;
-	cout << "\t\t 2.°´ Å®ÍÅÌå×Ü·Ö ½µĞòÊä³ö " << endl;
-	cout << "\t\t 3.°´ Ñ§Ôº×Ü·Ö   ½µĞòÊä³ö " << endl;
-	cout << "\t\t 4.°´ Ñ§ÔºID     ÉıĞòÊä³ö " << endl;
-	cout << "\t\t 5.·µ»ØÖ÷²Ëµ¥ " << endl;
-	cout << "\t\t   ÇëÑ¡Ôñ £º";
+	cout << "\n\n\t\t 1.æŒ‰ ç”·å›¢ä½“æ€»åˆ† é™åºè¾“å‡º " << endl;
+	cout << "\t\t 2.æŒ‰ å¥³å›¢ä½“æ€»åˆ† é™åºè¾“å‡º " << endl;
+	cout << "\t\t 3.æŒ‰ å­¦é™¢æ€»åˆ†   é™åºè¾“å‡º " << endl;
+	cout << "\t\t 4.æŒ‰ å­¦é™¢ID     å‡åºè¾“å‡º " << endl;
+	cout << "\t\t 5.è¿”å›ä¸»èœå• " << endl;
+	cout << "\t\t   è¯·é€‰æ‹© ï¼š";
 	NumCheck(&choose, 5, 1);
 
-	collegeNode* tail = *Chead; // ¶¨ÒåÒ»¸öÖ¸Õë£¬ÓÃÀ´ÕÒµ½Î²½ÚµãµÄµØÖ·
+	collegeNode* tail = *Chead; // å®šä¹‰ä¸€ä¸ªæŒ‡é’ˆï¼Œç”¨æ¥æ‰¾åˆ°å°¾èŠ‚ç‚¹çš„åœ°å€
 	while (tail->next != NULL) {
 		tail = tail->next;
 	}
 
 	if (choose == 1) ManQuickSort(Chead, &tail);
-	if (choose == 2) WomQuickSort(Chead, &tail); // µ÷ÓÃWomQuickSortº¯Êı¶Ôµ¥Á´±í½øĞĞ¿ìËÙÅÅĞò£¬²¢´«µİÎ²½ÚµãµÄµØÖ· 
+	if (choose == 2) WomQuickSort(Chead, &tail); // è°ƒç”¨WomQuickSortå‡½æ•°å¯¹å•é“¾è¡¨è¿›è¡Œå¿«é€Ÿæ’åºï¼Œå¹¶ä¼ é€’å°¾èŠ‚ç‚¹çš„åœ°å€ 
 	if (choose == 3) CollegeGradeQuickSort(Chead, &tail);
 	if (choose == 4) CollegeIDQuickSort(Chead, &tail);
 	if (choose == 5) return;
-	GradePrint(*Chead); // ´òÓ¡ÅÅĞò½á¹û
+	GradePrint(*Chead); // æ‰“å°æ’åºç»“æœ
  }
 
 }
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	WomQuickSort
-¹¦ÄÜÃèÊö:
-    ¸ù¾İÅ®ÍÅ×Ü·Ö½µĞò¿ìËÙÅÅĞò
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+    æ ¹æ®å¥³å›¢æ€»åˆ†é™åºå¿«é€Ÿæ’åº
+å‡½æ•°å‚æ•°:
     collegeNode** head,collegeNode** tail
-·µ»ØÖµ:
-	 ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê5ÔÂ11ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	 æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´5æœˆ11æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void WomQuickSort(collegeNode** head, collegeNode** tail)
 {
-	if (*head == *tail || *head == NULL || head == &(*tail)->next) return;//³ö¿Ú
-	//*head == *tail£¬±íÊ¾Á´±íÖ»ÓĞÒ»¸ö½Úµã£¬²»ĞèÒªÅÅĞò¡£
-	//* head == NULL£¬±íÊ¾Á´±íÎª¿Õ£¬Ã»ÓĞ½Úµã£¬²»ĞèÒªÅÅĞò¡£
-	//head == &(*tail)->next£¬±íÊ¾Á´±íÒÑ¾­±»·Ö¸îµ½×îĞ¡µÄ×ÓÁ´±í£¬Ã¿¸ö×ÓÁ´±íÖ»ÓĞÒ»¸ö½Úµã»òÕßÃ»ÓĞ½Úµã£¬²»ĞèÒªÅÅĞò¡£
+	if (*head == *tail || *head == NULL || head == &(*tail)->next) return;//å‡ºå£
+	//*head == *tailï¼Œè¡¨ç¤ºé“¾è¡¨åªæœ‰ä¸€ä¸ªèŠ‚ç‚¹ï¼Œä¸éœ€è¦æ’åºã€‚
+	//* head == NULLï¼Œè¡¨ç¤ºé“¾è¡¨ä¸ºç©ºï¼Œæ²¡æœ‰èŠ‚ç‚¹ï¼Œä¸éœ€è¦æ’åºã€‚
+	//head == &(*tail)->nextï¼Œè¡¨ç¤ºé“¾è¡¨å·²ç»è¢«åˆ†å‰²åˆ°æœ€å°çš„å­é“¾è¡¨ï¼Œæ¯ä¸ªå­é“¾è¡¨åªæœ‰ä¸€ä¸ªèŠ‚ç‚¹æˆ–è€…æ²¡æœ‰èŠ‚ç‚¹ï¼Œä¸éœ€è¦æ’åºã€‚
 	collegeNode* q = *head;
 	collegeNode* p = *head;
 	collegeNode* pre = *head;
 	collegeNode* temp = *head;
 
 	while (q != *tail) {
-		q = q->next;// ¶ÔÓÚÒ»¸öÁ´±íÖ»±éÀúÒ»±é
-		if (q->womGrade > (*head)->womGrade) {// Èç¹ûqµÄÖµ´óÓÚ»ùµãÔò·ÅÔÚp×ó±ß
+		q = q->next;// å¯¹äºä¸€ä¸ªé“¾è¡¨åªéå†ä¸€é
+		if (q->womGrade > (*head)->womGrade) {// å¦‚æœqçš„å€¼å¤§äºåŸºç‚¹åˆ™æ”¾åœ¨på·¦è¾¹
 			pre = p;
 			p = p->next;
 			SwapNodeValue(&p, &q);
 		}
 	}
-	SwapNodeValue(head, &p);// ½«»ùµã·ÅÔÚ×îÖÕÎ»ÖÃ
+	SwapNodeValue(head, &p);// å°†åŸºç‚¹æ”¾åœ¨æœ€ç»ˆä½ç½®
 	WomQuickSort(head, &pre);
 	WomQuickSort(&p->next, tail);
 }
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	CollegeIDQuickSort
-¹¦ÄÜÃèÊö:
-	¸ù¾İÑ§ÔºIDÉıĞòĞò¿ìËÙÅÅĞò
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+	æ ¹æ®å­¦é™¢IDå‡åºåºå¿«é€Ÿæ’åº
+å‡½æ•°å‚æ•°:
 	collegeNode** head,collegeNode** tail
-·µ»ØÖµ:
-	 ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê5ÔÂ28ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	 æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´5æœˆ28æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void CollegeIDQuickSort(collegeNode** head, collegeNode** tail)
 {
-	if (*head == *tail || *head == NULL || head == &(*tail)->next) return;//³ö¿Ú
-	//*head == *tail£¬±íÊ¾Á´±íÖ»ÓĞÒ»¸ö½Úµã£¬²»ĞèÒªÅÅĞò¡£
-	//* head == NULL£¬±íÊ¾Á´±íÎª¿Õ£¬Ã»ÓĞ½Úµã£¬²»ĞèÒªÅÅĞò¡£
-	//head == &(*tail)->next£¬±íÊ¾Á´±íÒÑ¾­±»·Ö¸îµ½×îĞ¡µÄ×ÓÁ´±í£¬Ã¿¸ö×ÓÁ´±íÖ»ÓĞÒ»¸ö½Úµã»òÕßÃ»ÓĞ½Úµã£¬²»ĞèÒªÅÅĞò¡£
+	if (*head == *tail || *head == NULL || head == &(*tail)->next) return;//å‡ºå£
+	//*head == *tailï¼Œè¡¨ç¤ºé“¾è¡¨åªæœ‰ä¸€ä¸ªèŠ‚ç‚¹ï¼Œä¸éœ€è¦æ’åºã€‚
+	//* head == NULLï¼Œè¡¨ç¤ºé“¾è¡¨ä¸ºç©ºï¼Œæ²¡æœ‰èŠ‚ç‚¹ï¼Œä¸éœ€è¦æ’åºã€‚
+	//head == &(*tail)->nextï¼Œè¡¨ç¤ºé“¾è¡¨å·²ç»è¢«åˆ†å‰²åˆ°æœ€å°çš„å­é“¾è¡¨ï¼Œæ¯ä¸ªå­é“¾è¡¨åªæœ‰ä¸€ä¸ªèŠ‚ç‚¹æˆ–è€…æ²¡æœ‰èŠ‚ç‚¹ï¼Œä¸éœ€è¦æ’åºã€‚
 	collegeNode* q = *head;
 	collegeNode* p = *head;
 	collegeNode* pre = *head;
 	collegeNode* temp = *head;
 
 	while (q != *tail) {
-		q = q->next;// ¶ÔÓÚÒ»¸öÁ´±íÖ»±éÀúÒ»±é
-		if (q->collegeID < (*head)->collegeID) {// Èç¹ûqµÄÖµ´óÓÚ»ùµãÔò·ÅÔÚp×ó±ß
+		q = q->next;// å¯¹äºä¸€ä¸ªé“¾è¡¨åªéå†ä¸€é
+		if (q->collegeID < (*head)->collegeID) {// å¦‚æœqçš„å€¼å¤§äºåŸºç‚¹åˆ™æ”¾åœ¨på·¦è¾¹
 			pre = p;
 			p = p->next;
 			SwapNodeValue(&p, &q);
 		}
 	}
-	SwapNodeValue(head, &p);// ½«»ùµã·ÅÔÚ×îÖÕÎ»ÖÃ
+	SwapNodeValue(head, &p);// å°†åŸºç‚¹æ”¾åœ¨æœ€ç»ˆä½ç½®
 	CollegeIDQuickSort(head, &pre);
 	CollegeIDQuickSort(&p->next, tail);
 }
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	ManQuickSort
-¹¦ÄÜÃèÊö:
-     ¸ù¾İÄĞÍÅ×Ü·Ö½µĞò¿ìËÙÅÅĞò 
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+     æ ¹æ®ç”·å›¢æ€»åˆ†é™åºå¿«é€Ÿæ’åº 
+å‡½æ•°å‚æ•°:
      collegeNode** head,collegeNode** tail
-·µ»ØÖµ:
-	 ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê5ÔÂ11ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	 æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´5æœˆ11æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void ManQuickSort(collegeNode** head, collegeNode** tail)
-{//°´Å®ÍÅÌå×Ü·Ö¿ìËÙÅÅĞò
-	if (*head == *tail || *head == NULL || head == &(*tail)->next) return;//³ö¿Ú
+{//æŒ‰å¥³å›¢ä½“æ€»åˆ†å¿«é€Ÿæ’åº
+	if (*head == *tail || *head == NULL || head == &(*tail)->next) return;//å‡ºå£
 
 	collegeNode* q = *head;
 	collegeNode* p = *head;
 	collegeNode* pre = *head;
 
 	while (q != *tail) {
-		q = q->next;// ¶ÔÓÚÒ»¸öÁ´±íÖ»±éÀúÒ»±é
-		if (q->manGrade > (*head)->manGrade) {// Èç¹ûqµÄÖµ´óÓÚ»ùµãÔò·ÅÔÚp×ó±ß
+		q = q->next;// å¯¹äºä¸€ä¸ªé“¾è¡¨åªéå†ä¸€é
+		if (q->manGrade > (*head)->manGrade) {// å¦‚æœqçš„å€¼å¤§äºåŸºç‚¹åˆ™æ”¾åœ¨på·¦è¾¹
 			pre = p;
 			p = p->next;
 			SwapNodeValue(&p, &q);
 		}
 	}
-	SwapNodeValue(head, &p);// ½«»ùµã·ÅÔÚ×îÖÕÎ»ÖÃ
+	SwapNodeValue(head, &p);// å°†åŸºç‚¹æ”¾åœ¨æœ€ç»ˆä½ç½®
 	ManQuickSort(head, &pre);
 	ManQuickSort(&p->next, tail);
 }
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	CollegeGradeQuickSort
-¹¦ÄÜÃèÊö:
-     ¸ù¾İÑ§Ôº×Ü·Ö½µĞò¿ìËÙÅÅĞò 
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+     æ ¹æ®å­¦é™¢æ€»åˆ†é™åºå¿«é€Ÿæ’åº 
+å‡½æ•°å‚æ•°:
      collegeNode** head,collegeNode** tail
-·µ»ØÖµ:
-	 ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê5ÔÂ11ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	 æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´5æœˆ11æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void CollegeGradeQuickSort(collegeNode** head, collegeNode** tail)
-{//°´Ñ§Ôº×Ü·Ö¿ìËÙÅÅĞò
-	if (*head == *tail || *head == NULL || head == &(*tail)->next) return;//³ö¿Ú
+{//æŒ‰å­¦é™¢æ€»åˆ†å¿«é€Ÿæ’åº
+	if (*head == *tail || *head == NULL || head == &(*tail)->next) return;//å‡ºå£
 
 	collegeNode* q = *head;
 	collegeNode* p = *head;
 	collegeNode* pre = *head;
 
 	while (q != *tail) {
-		q = q->next;// ¶ÔÓÚÒ»¸öÁ´±íÖ»±éÀúÒ»±é
-		if (q->collegeGrade > (*head)->collegeGrade) {// Èç¹ûqµÄÖµ´óÓÚ»ùµãÔò·ÅÔÚp×ó±ß
+		q = q->next;// å¯¹äºä¸€ä¸ªé“¾è¡¨åªéå†ä¸€é
+		if (q->collegeGrade > (*head)->collegeGrade) {// å¦‚æœqçš„å€¼å¤§äºåŸºç‚¹åˆ™æ”¾åœ¨på·¦è¾¹
 			pre = p;
 			p = p->next;
 			SwapNodeValue(&p, &q);
 		}
 	}
 
-	SwapNodeValue(head, &p);// ½«»ùµã·ÅÔÚ×îÖÕÎ»ÖÃ
+	SwapNodeValue(head, &p);// å°†åŸºç‚¹æ”¾åœ¨æœ€ç»ˆä½ç½®
 	CollegeGradeQuickSort(head, &pre);
 	CollegeGradeQuickSort(&p->next, tail);
 }
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	SwapNodeValue
-¹¦ÄÜÃèÊö:
-    ½»»»Öµ,²»¸ü¸ÄÁ´±íÖ¸Õë
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+    äº¤æ¢å€¼,ä¸æ›´æ”¹é“¾è¡¨æŒ‡é’ˆ
+å‡½æ•°å‚æ•°:
     collegeNode** a, collegeNode** b
-·µ»ØÖµ:
-	 ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê5ÔÂ11ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	 æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´5æœˆ11æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void SwapNodeValue(collegeNode** a, collegeNode** b)
-{//½»»»Öµ,²»¸ü¸ÄÁ´±íÖ¸Õë
+{//äº¤æ¢å€¼,ä¸æ›´æ”¹é“¾è¡¨æŒ‡é’ˆ
 
-	  //ÔİÊ±´æ·ÅaµÄÖµ
+	  //æš‚æ—¶å­˜æ”¾açš„å€¼
 	collegeNode* temp = (collegeNode*)malloc(sizeof(collegeNode));
 	temp->collegeID = (*a)->collegeID;
 	strcpy(temp->collegeName, (*a)->collegeName);
@@ -1304,119 +1304,119 @@ void SwapNodeValue(collegeNode** a, collegeNode** b)
 	temp->manGrade = (*a)->manGrade;
 	temp->womGrade = (*a)->womGrade;
 
-	// ½«½ÚµãbµÄÊı¾İ¸´ÖÆµ½½Úµãa
+	// å°†èŠ‚ç‚¹bçš„æ•°æ®å¤åˆ¶åˆ°èŠ‚ç‚¹a
 	(*a)->collegeID = (*b)->collegeID;
 	strcpy((*a)->collegeName, (*b)->collegeName);
 	(*a)->collegeGrade = (*b)->collegeGrade;
 	(*a)->manGrade = (*b)->manGrade;
 	(*a)->womGrade = (*b)->womGrade;
 
-	// ½«ÁÙÊ±½ÚµãµÄÊı¾İ¸´ÖÆµ½½Úµãb
+	// å°†ä¸´æ—¶èŠ‚ç‚¹çš„æ•°æ®å¤åˆ¶åˆ°èŠ‚ç‚¹b
 	(*b)->collegeID = temp->collegeID;
 	strcpy((*b)->collegeName, temp->collegeName);
 	(*b)->collegeGrade = temp->collegeGrade;
 	(*b)->manGrade = temp->manGrade;
 	(*b)->womGrade = temp->womGrade;
 
-	// ÊÍ·ÅÁÙÊ±½Úµã
+	// é‡Šæ”¾ä¸´æ—¶èŠ‚ç‚¹
 	free(temp);
 }
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	GradePrint
-¹¦ÄÜÃèÊö:
-	Êä³öÅÅĞòºóµÄ½á¹û
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+	è¾“å‡ºæ’åºåçš„ç»“æœ
+å‡½æ•°å‚æ•°:
    collegeNode* Chead
-·µ»ØÖµ:
-	 ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê4ÔÂ5ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	 æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´4æœˆ5æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void GradePrint(collegeNode* Chead)
-{//Êä³öÅÅĞòºóµÄ½á¹û
+{//è¾“å‡ºæ’åºåçš„ç»“æœ
 	if (Chead == NULL)
 	{
 		printf("====================\n");
-		printf("µ±Ç°Ã»ÓĞÈÎºÎÊı¾İ\n");
+		printf("å½“å‰æ²¡æœ‰ä»»ä½•æ•°æ®\n");
 		printf("====================\n");
 		system("pause");
 		return;
 	}
 	system("cls");
-	switch (print_choose)//print_chooseÒÑ¾­ÔÚmainÖĞÑ¡Ôñ
+	switch (print_choose)//print_chooseå·²ç»åœ¨mainä¸­é€‰æ‹©
 	{
 	case 1:
-		printf("°´ÄĞÍÅÌå×Ü·Ö½µĞòÊä³ö:\n");
+		printf("æŒ‰ç”·å›¢ä½“æ€»åˆ†é™åºè¾“å‡º:\n");
 		break;
 	case 2:
-		printf("°´Å®ÍÅÌå×Ü·Ö½µĞòÊä³ö£º\n");
+		printf("æŒ‰å¥³å›¢ä½“æ€»åˆ†é™åºè¾“å‡ºï¼š\n");
 		break;
 	case 3:
-		printf("°´Ñ§Ôº×Ü·Ö½µĞòÊä³ö£º\n");
+		printf("æŒ‰å­¦é™¢æ€»åˆ†é™åºè¾“å‡ºï¼š\n");
 		break;
 	case 4:
-		printf("°´Ñ§ÔºIDÉıĞòĞòÊä³ö£º\n");
+		printf("æŒ‰å­¦é™¢IDå‡åºåºè¾“å‡ºï¼š\n");
 		break;
 	}
 
-	printf("¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\n");
-	printf("\tÑ§Ğ£±àºÅ(Ãû³Æ)\t\tÍÅÌå×Ü·Ö\tÄĞÍÅ×Ü·Ö\tÅ®ÍÅ×Ü·Ö\n");
+	printf("â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n");
+	printf("\tå­¦æ ¡ç¼–å·(åç§°)\t\tå›¢ä½“æ€»åˆ†\tç”·å›¢æ€»åˆ†\tå¥³å›¢æ€»åˆ†\n");
 
 	while (Chead) {
 		printf("\t%d.%-15s\t%-3d\t\t%-3d\t\t%-3d\n", Chead->collegeID, Chead->collegeName, Chead->collegeGrade, Chead->manGrade, Chead->womGrade);
 		Chead = Chead->next;
 	}
-	printf("¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\n");
+	printf("â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n");
 	system("pause");
 }
-/******************************************ÎÄ¼ş¶ÁĞ´*****************************************************************/
+/******************************************æ–‡ä»¶è¯»å†™*****************************************************************/
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	Load
-¹¦ÄÜÃèÊö:
-   µ÷ÓÃCFileRead¡¢EFileReadº¯Êı£¬¶ÁÈ¡ÒÑ´æÔÚµÄĞÅÏ¢
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+   è°ƒç”¨CFileReadã€EFileReadå‡½æ•°ï¼Œè¯»å–å·²å­˜åœ¨çš„ä¿¡æ¯
+å‡½æ•°å‚æ•°:
    collegeNode** Chead, collegeNode** Cend, eventNode** Ehead, eventNode** Eend
-·µ»ØÖµ:
-	 ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê5ÔÂ21ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	 æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´5æœˆ21æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void Load(collegeNode** Chead, collegeNode** Cend, eventNode** Ehead, eventNode** Eend)
-{//¶ÁÈ¡ÒÑ´æÔÚµÄĞÅÏ¢
+{//è¯»å–å·²å­˜åœ¨çš„ä¿¡æ¯
 	if (fileFlag) {
-		CFileRead(Chead, Cend);//Ñ§Ôº¶ÁÈ¡
-		EFileRead(Ehead, Eend);//ÏîÄ¿¶ÁÈ¡
-		fileFlag = false;//¶ÁÈ¡ºó²»ÄÜÔÙ´Î¶ÁÈ¡
-		printf("\n\t\t¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş\n\t\tØ­               Êı¾İÒÑ¶ÁÈë             Ø­\n\t\t¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş\n\n");		
+		CFileRead(Chead, Cend);//å­¦é™¢è¯»å–
+		EFileRead(Ehead, Eend);//é¡¹ç›®è¯»å–
+		fileFlag = false;//è¯»å–åä¸èƒ½å†æ¬¡è¯»å–
+		printf("\n\t\tã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“\n\t\tä¸¨               æ•°æ®å·²è¯»å…¥             ä¸¨\n\t\tã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“\n\n");		
 		system("pause");
 	}
 	else {
-		printf("\n\t\t¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş\n\t\tØ­               ÇëÎğÖØ¸´¶ÁĞ´             Ø­\n\t\t¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş\n\n");
+		printf("\n\t\tã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“\n\t\tä¸¨               è¯·å‹¿é‡å¤è¯»å†™             ä¸¨\n\t\tã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“\n\n");
 		system("pause");
 	}
 
 }
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	Save
-¹¦ÄÜÃèÊö:
-   Í¨¹ıµ÷ÓÃCFileWrite¡¢EFileWriteº¯Êı£¬±£´æĞÅÏ¢²¢ÍË³ö
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+   é€šè¿‡è°ƒç”¨CFileWriteã€EFileWriteå‡½æ•°ï¼Œä¿å­˜ä¿¡æ¯å¹¶é€€å‡º
+å‡½æ•°å‚æ•°:
    collegeNode* Chead, eventNode* Ehead
-·µ»ØÖµ:
-	 ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê5ÔÂ21ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	 æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´5æœˆ21æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void Save(collegeNode* Chead, eventNode* Ehead)
-{//±£´æĞÅÏ¢²¢ÍË³ö
-	printf("\n\t\t¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş\n\t\tØ­           È·¶¨¸²¸Ç£¿<Y/N>           Ø­\n\t\t¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş\n\n\t\t\t\t");
+{//ä¿å­˜ä¿¡æ¯å¹¶é€€å‡º
+	printf("\n\t\tã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“\n\t\tä¸¨           ç¡®å®šè¦†ç›–ï¼Ÿ<Y/N>           ä¸¨\n\t\tã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“\n\n\t\t\t\t");
 	char ch;
 	cin >> ch;
 	if (ch == 'Y' || ch == 'y') {
-		printf("\n\t\t¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş\n\t\tØ­           ÎÄ¼ş¸²¸Ç³É¹¦           Ø­\n\t\t¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş¡ş\n\n");
+		printf("\n\t\tã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“\n\t\tä¸¨           æ–‡ä»¶è¦†ç›–æˆåŠŸ           ä¸¨\n\t\tã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“ã€“\n\n");
 		CFileWrite(Chead);
 		EFileWrite(Ehead);
 		exit(0);
@@ -1424,28 +1424,28 @@ void Save(collegeNode* Chead, eventNode* Ehead)
 	else return;
 }
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	CFileRead
-¹¦ÄÜÃèÊö:
-   ¶ÁÈ¡ÎÄ¼şÖĞÑ§ÔºµÄĞÅÏ¢
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+   è¯»å–æ–‡ä»¶ä¸­å­¦é™¢çš„ä¿¡æ¯
+å‡½æ•°å‚æ•°:
    collegeNode** Chead, collegeNode** Cend
-·µ»ØÖµ:
-	 ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê5ÔÂ24ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	 æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´5æœˆ24æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void CFileRead(collegeNode** Chead, collegeNode** Cend)
-{//¶ÁÈ¡ÎÄ¼şÖĞÑ§ÔºµÄĞÅÏ¢
+{//è¯»å–æ–‡ä»¶ä¸­å­¦é™¢çš„ä¿¡æ¯
 	FILE* file = NULL;
 	file = fopen("Cdata.txt", "r+");
 
 	if (!file) {
-		printf("\n\tERROR:´ò¿ªÎÄ¼şÊ§°Ü\n");
+		printf("\n\tERROR:æ‰“å¼€æ–‡ä»¶å¤±è´¥\n");
 		exit(0);
 	}
 	char buf[1024];
-	fgets(buf, sizeof(buf), file);//¶ÁÈ¡µÚÒ»ĞĞ±êÌâ£¬²»×ö´¦Àí
+	fgets(buf, sizeof(buf), file);//è¯»å–ç¬¬ä¸€è¡Œæ ‡é¢˜ï¼Œä¸åšå¤„ç†
 	while (1)
 	{
 		char collegeName[100];
@@ -1454,19 +1454,20 @@ void CFileRead(collegeNode** Chead, collegeNode** Cend)
 		int  manGrade;
 		int  womGrade;
 
-		if (fscanf(file, "%d %s %d %d %d", &collegeID, collegeName, &collegeGrade, &manGrade, &womGrade) != EOF)//ÖğĞĞ¶ÁÈ¡
+		if (fscanf(file, "%d %s %d %d %d", &collegeID, collegeName, &collegeGrade, &manGrade, &womGrade) != EOF)//é€è¡Œè¯»å–
 		{
-			collegeNode* temp = (collegeNode*)malloc(sizeof(collegeNode));//Îª½ÚµãÉêÇë¿Õ¼ä
+			collegeNode* temp = (collegeNode*)malloc(sizeof(collegeNode));//ä¸ºèŠ‚ç‚¹ç”³è¯·ç©ºé—´
 
 			id_college = temp->collegeID = collegeID;
 			strcpy(temp->collegeName, collegeName);
-			temp->collegeGrade = collegeGrade;           //Îª½Úµã¸÷ÏîĞÅÏ¢¸³Öµ
+			temp->collegeGrade = collegeGrade;           //ä¸ºèŠ‚ç‚¹å„é¡¹ä¿¡æ¯èµ‹å€¼
 			temp->manGrade = manGrade;
 			temp->womGrade = womGrade;
 			temp->next = NULL;          
-	        collegeCount++;
+	                collegeCount++;
+			location++;
            
-			//Î²²å·¨½¨Á¢µ¥Á´±í
+			//å°¾æ’æ³•å»ºç«‹å•é“¾è¡¨
 			if (*Chead == NULL) {
 				*Chead = temp;
 			}
@@ -1477,27 +1478,27 @@ void CFileRead(collegeNode** Chead, collegeNode** Cend)
 		}
 		else break;
 	}
-	// id_college++;
+	location--;
 	fclose(file);
 }
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	CFileWrite
-¹¦ÄÜÃèÊö:
-   ½«Ñ§ÔºÁ´±í´òÓ¡µ½ÎÄ¼ş£¬±£´æĞÅÏ¢
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+   å°†å­¦é™¢é“¾è¡¨æ‰“å°åˆ°æ–‡ä»¶ï¼Œä¿å­˜ä¿¡æ¯
+å‡½æ•°å‚æ•°:
    collegeNode* Chead
-·µ»ØÖµ:
-	 ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê5ÔÂ21ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	 æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´5æœˆ21æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void CFileWrite(collegeNode* Chead)
-{//½«Ñ§ÔºÁ´±í´òÓ¡µ½ÎÄ¼ş£¬±£´æĞÅÏ¢
+{//å°†å­¦é™¢é“¾è¡¨æ‰“å°åˆ°æ–‡ä»¶ï¼Œä¿å­˜ä¿¡æ¯
 
 	FILE* file = NULL;
 	file = fopen("Cdata.txt", "w+");
-	fprintf(file, "Ñ§Ôº±àºÅ Ñ§ÔºÃû³Æ        Ñ§Ôº³É¼¨ ÄĞÍÅ³É¼¨ Å®ÍÅ³É¼¨\n");
+	fprintf(file, "å­¦é™¢ç¼–å· å­¦é™¢åç§°        å­¦é™¢æˆç»© ç”·å›¢æˆç»© å¥³å›¢æˆç»©\n");
 	while (Chead)
 	{
 		fprintf(file, "%-8d %-15s   %-8d %-8d %-8d\n", Chead->collegeID, Chead->collegeName, Chead->collegeGrade, Chead->manGrade, Chead->womGrade);
@@ -1506,21 +1507,21 @@ void CFileWrite(collegeNode* Chead)
 	fclose(file);
 }
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	EFileRead
-¹¦ÄÜÃèÊö:
-   ¶ÁÈ¡ÎÄ¼şÖĞÏîÄ¿µÄĞÅÏ¢
-º¯Êı²ÎÊı:
+åŠŸèƒ½æè¿°:
+   è¯»å–æ–‡ä»¶ä¸­é¡¹ç›®çš„ä¿¡æ¯
+å‡½æ•°å‚æ•°:
    eventNode** Ehead, eventNode** Eend
-·µ»ØÖµ:
-	 ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê5ÔÂ28ÈÕ´´½¨±¾Ä£¿é£¬
+è¿”å›å€¼:
+	 æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´5æœˆ28æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void EFileRead(eventNode** Ehead, eventNode** Eend)
-{//¶ÁÈ¡ÎÄ¼şÖĞÏîÄ¿µÄĞÅÏ¢
+{//è¯»å–æ–‡ä»¶ä¸­é¡¹ç›®çš„ä¿¡æ¯
 
-	ifstream file("Edata.txt");//´ò¿ªÎÄ¼ş
+	ifstream file("Edata.txt");//æ‰“å¼€æ–‡ä»¶
 
 	if (!file.is_open()) {
 		cout << "Failed to open file: Edata.txt" << endl;
@@ -1528,9 +1529,9 @@ void EFileRead(eventNode** Ehead, eventNode** Eend)
 	}
 
 	string line;
-	getline(file, line); // ¶ÁÈ¡µÚÒ»ĞĞ±êÌâ£¬²»×ö´¦Àí
+	getline(file, line); // è¯»å–ç¬¬ä¸€è¡Œæ ‡é¢˜ï¼Œä¸åšå¤„ç†
 
-	while (getline(file, line))//ÖğĞĞ¶ÁÈ¡ÎÄ¼şÄÚÈİ
+	while (getline(file, line))//é€è¡Œè¯»å–æ–‡ä»¶å†…å®¹
 	{
 		int eventID;
 		int sex;
@@ -1539,16 +1540,16 @@ void EFileRead(eventNode** Ehead, eventNode** Eend)
 		int competeCollege;
 		string eventName;
 
-		istringstream iss(line); // Ê¹ÓÃistringstream½«Ò»ĞĞÄÚÈİ×ª»¯Îª¸÷¸öÖµ
+		istringstream iss(line); // ä½¿ç”¨istringstreamå°†ä¸€è¡Œå†…å®¹è½¬åŒ–ä¸ºå„ä¸ªå€¼
 		iss >> eventName >> eventID >> sex >> gradeWeight >> competeCollege;
 
 		awardCollege = new int[competeCollege];
 		for (int i = 1; i <= competeCollege; i++)
-			iss >> awardCollege[i];//Ñ­»·¶ÁÈ¡½ÓÏÂÀ´µÄÄÚÈİ
+			iss >> awardCollege[i];//å¾ªç¯è¯»å–æ¥ä¸‹æ¥çš„å†…å®¹
 
-		//¸ø½ÚµãµÄ¸÷ÏîÖµ¸³Öµ
+		//ç»™èŠ‚ç‚¹çš„å„é¡¹å€¼èµ‹å€¼
 		eventNode* temp = (eventNode*)malloc(sizeof(eventNode));
-		strcpy(temp->eventName, eventName.c_str());//½«String×ª»¯Îªchar[]
+		strcpy(temp->eventName, eventName.c_str());//å°†Stringè½¬åŒ–ä¸ºchar[]
 		memcpy(temp->awardCollege, awardCollege, sizeof(awardCollege) * competeCollege);
 		temp->gradeWeight = gradeWeight;
 		id_event = temp->eventID = eventID;
@@ -1557,7 +1558,7 @@ void EFileRead(eventNode** Ehead, eventNode** Eend)
 		temp->next = NULL;
 		//id_event++;
 
-		//Î²²å·¨½¨Á¢µ¥Á´±í
+		//å°¾æ’æ³•å»ºç«‹å•é“¾è¡¨
 		if (*Ehead == NULL)
 			*Ehead = temp;
 		else
@@ -1567,30 +1568,30 @@ void EFileRead(eventNode** Ehead, eventNode** Eend)
 	file.close();
 }
 /**********************************************************************\
-º¯ÊıÃû³Æ:
+å‡½æ•°åç§°:
 	EFileWrite
-¹¦ÄÜÃèÊö:
-	½«ÏîÄ¿Á´±í´òÓ¡µ½ÎÄ¼ş£¬±£´æĞÅÏ¢
-º¯Êı²ÎÊı:
-   ÎŞ
-·µ»ØÖµ:
-	 ÎŞ
-Ä£¿é  :
-	Áº×Ó²ıÓÚ2023Äê5ÔÂ21ÈÕ´´½¨±¾Ä£¿é£¬
+åŠŸèƒ½æè¿°:
+	å°†é¡¹ç›®é“¾è¡¨æ‰“å°åˆ°æ–‡ä»¶ï¼Œä¿å­˜ä¿¡æ¯
+å‡½æ•°å‚æ•°:
+   æ— 
+è¿”å›å€¼:
+	 æ— 
+æ¨¡å—  :
+	æ¢å­æ˜Œäº2023å¹´5æœˆ21æ—¥åˆ›å»ºæœ¬æ¨¡å—ï¼Œ
 \*********************************************************************/
 void EFileWrite(eventNode* Ehead)
-{//½«ÏîÄ¿Á´±í´òÓ¡µ½ÎÄ¼ş£¬±£´æĞÅÏ¢
+{//å°†é¡¹ç›®é“¾è¡¨æ‰“å°åˆ°æ–‡ä»¶ï¼Œä¿å­˜ä¿¡æ¯
 
 	FILE* file = NULL;
 	file = fopen("Edata.txt", "w+");
-	fprintf(file, "ÏîÄ¿Ãû³Æ       ÏîÄ¿±àºÅ ĞÔ±ğ Ç°¼¸Ãû   ²ÎÈüÑ§ÔºÊıÁ¿  ²ÎÈüÑ§Ôº±àºÅ(Ãû´Î)\n");//µÚÒ»ĞĞ´òÓ¡±êÌâ
+	fprintf(file, "é¡¹ç›®åç§°       é¡¹ç›®ç¼–å· æ€§åˆ« å‰å‡ å   å‚èµ›å­¦é™¢æ•°é‡  å‚èµ›å­¦é™¢ç¼–å·(åæ¬¡)\n");//ç¬¬ä¸€è¡Œæ‰“å°æ ‡é¢˜
 
-	while (Ehead)//ÏÈĞ´µ¥¶ÀÊı¾İ£¬ÔÙĞ´Êı×éÊı¾İ
+	while (Ehead)//å…ˆå†™å•ç‹¬æ•°æ®ï¼Œå†å†™æ•°ç»„æ•°æ®
 	{
 		fprintf(file, "%-12s   %-8d %-4d %-4d    %-4d          ", Ehead->eventName, Ehead->eventID, Ehead->sex, Ehead->gradeWeight, Ehead->competeCollege);
 		for (int i = 1; i <= Ehead->competeCollege; i++)
 			fprintf(file, " %d", Ehead->awardCollege[i]);
-		fprintf(file, "\n");//ÊäÈëÍêÒ»¸öÏîÄ¿µÄĞÅÏ¢¾Í»»ĞĞ
+		fprintf(file, "\n");//è¾“å…¥å®Œä¸€ä¸ªé¡¹ç›®çš„ä¿¡æ¯å°±æ¢è¡Œ
 		Ehead = Ehead->next;
 	}
 	fclose(file);
